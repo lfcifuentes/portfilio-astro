@@ -12,5 +12,7 @@
   "dependencies": {
     "astro": "^4.0.0"
   },
-  "devDependencies": {}
+  "devDependencies": {
+    "terser": "^5.46.2"
+  }
 }

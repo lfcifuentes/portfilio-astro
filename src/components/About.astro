@@ -1,0 +1,169 @@
+---
+---
+
+<style>
+  #about {
+    padding: 100px 0;
+  }
+
+  .about-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 60px;
+    align-items: start;
+  }
+
+  .about-text p {
+    font-size: 15px;
+    color: #9aa8bc;
+    line-height: 1.8;
+    margin-bottom: 16px;
+  }
+
+  .about-text p strong {
+    color: var(--text);
+  }
+
+  .about-text p em {
+    color: var(--green);
+    font-style: normal;
+  }
+
+  .impact-list {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+  }
+
+  .impact-item {
+    background: var(--bg2);
+    border: 1px solid var(--border2);
+    border-left: 3px solid var(--blue);
+    border-radius: 8px;
+    padding: 16px 18px;
+    transition: border-color 0.2s;
+  }
+
+  .impact-item:hover {
+    border-left-color: var(--green);
+  }
+
+  .impact-item .num {
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: 26px;
+    font-weight: 800;
+    color: var(--blue);
+    line-height: 1;
+  }
+
+  .impact-item .desc {
+    font-size: 13px;
+    color: var(--muted);
+    margin-top: 2px;
+  }
+
+  .section-head {
+    margin-bottom: 48px;
+  }
+
+  .section-tag {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 11px;
+    color: var(--green);
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    margin-bottom: 10px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+
+  .section-tag::before {
+    content: '';
+    width: 20px;
+    height: 1px;
+    background: var(--green);
+  }
+
+  .section-title {
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: 40px;
+    font-weight: 800;
+    letter-spacing: -1px;
+    line-height: 1;
+  }
+
+  .section-title .accent {
+    color: var(--blue);
+  }
+
+  @media (max-width: 900px) {
+    .about-grid {
+      grid-template-columns: 1fr;
+    }
+  }
+
+  @media (max-width: 700px) {
+    #about {
+      padding: 72px 0;
+    }
+
+    .section-head {
+      margin-bottom: 36px;
+    }
+
+    .section-title {
+      font-size: 32px;
+    }
+  }
+
+  @media (max-width: 520px) {
+    .section-title {
+      font-size: 28px;
+    }
+  }
+</style>
+
+<section id="about">
+  <div class="container">
+    <div class="section-head">
+      <div class="section-tag">About</div>
+      <h2 class="section-title">Who I <span class="accent">am.</span></h2>
+    </div>
+    <div class="about-grid">
+      <div class="about-text">
+        <p>
+          Backend Engineer with <strong>+8 years</strong> building distributed systems and high-performance APIs in <strong>Go</strong>.
+          I specialize in <em>event-driven architectures</em>, async processing with workers and queues, and production observability.
+        </p>
+        <p>
+          I take <strong>full ownership</strong> of problems — from design to production.
+          My track record includes rebuilding systems with critical design flaws, working directly with clients to arrive at the right solution.
+          A key example: an authentication system rebuilt from scratch, now serving <em>70K+ users across 5 platforms with zero incidents post-launch</em>.
+        </p>
+        <p>
+          I've built and technically led marketplace, fintech and SaaS platforms deployed on AWS and Azure over Kubernetes with CI/CD.
+          I design solutions oriented around availability, latency and cost — and mentor teams to scale delivery without sacrificing quality.
+        </p>
+      </div>
+      <div class="impact-list">
+        <div class="impact-item">
+          <div class="num">70K+</div>
+          <div class="desc">Users served by Auth Manager — rebuilt from scratch with zero post-launch incidents</div>
+        </div>
+        <div class="impact-item">
+          <div class="num">80%</div>
+          <div class="desc">Response time improvement after migrating services to Go + FastAPI</div>
+        </div>
+        <div class="impact-item">
+          <div class="num">62K+</div>
+          <div class="desc">Records managed in Luxio (28K maintenance + 34K investigations) with background notifications</div>
+        </div>
+        <div class="impact-item">
+          <div class="num">8K</div>
+          <div class="desc">Registered users on NomadOS with ~2K active or historical memberships</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

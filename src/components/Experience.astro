@@ -1,0 +1,201 @@
+---
+---
+
+<style>
+  #experience {
+    padding: 100px 0;
+    background: var(--bg2);
+  }
+
+  .exp-list {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+  }
+
+  .exp-card {
+    background: var(--bg);
+    border: 1px solid var(--border2);
+    border-radius: 12px;
+    padding: 28px 32px;
+    display: grid;
+    grid-template-columns: 1fr auto;
+    gap: 24px;
+    align-items: start;
+    transition: border-color 0.2s;
+  }
+
+  .exp-card:hover {
+    border-color: rgba(52, 131, 250, 0.3);
+  }
+
+  .exp-role {
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: 20px;
+    font-weight: 800;
+    color: var(--text);
+    letter-spacing: -0.5px;
+  }
+
+  .exp-company {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 12px;
+    color: var(--blue);
+    margin: 6px 0 14px;
+    letter-spacing: 1px;
+  }
+
+  .exp-bullets {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }
+
+  .exp-bullets li {
+    font-size: 14px;
+    color: var(--muted);
+    line-height: 1.6;
+    display: flex;
+    gap: 10px;
+  }
+
+  .exp-bullets li::before {
+    content: '';
+    width: 12px;
+    height: 12px;
+    background: linear-gradient(135deg, var(--blue) 0%, var(--blue) 60%, transparent 60%);
+    clip-path: polygon(0 0, 100% 0, 100% 100%, 30% 100%, 30% 30%, 0 30%);
+    flex-shrink: 0;
+  }
+
+  .exp-bullets li strong {
+    color: var(--text);
+  }
+
+  .exp-date {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 11px;
+    color: var(--muted);
+    text-align: right;
+    white-space: nowrap;
+    padding-top: 4px;
+  }
+
+  .section-head {
+    margin-bottom: 48px;
+  }
+
+  .section-tag {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 11px;
+    color: var(--green);
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    margin-bottom: 10px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+
+  .section-tag::before {
+    content: '';
+    width: 20px;
+    height: 1px;
+    background: var(--green);
+  }
+
+  .section-title {
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: 40px;
+    font-weight: 800;
+    letter-spacing: -1px;
+    line-height: 1;
+  }
+
+  .section-title .accent {
+    color: var(--blue);
+  }
+
+  @media (max-width: 900px) {
+    .exp-card {
+      grid-template-columns: 1fr;
+    }
+
+    .exp-date {
+      text-align: left;
+    }
+  }
+
+  @media (max-width: 700px) {
+    #experience {
+      padding: 72px 0;
+    }
+
+    .section-head {
+      margin-bottom: 36px;
+    }
+
+    .section-title {
+      font-size: 32px;
+    }
+
+    .exp-card {
+      padding: 22px;
+    }
+  }
+
+  @media (max-width: 520px) {
+    .section-title {
+      font-size: 28px;
+    }
+  }
+</style>
+
+<section id="experience">
+  <div class="container">
+    <div class="section-head">
+      <div class="section-tag">Career</div>
+      <h2 class="section-title">Experience<span class="accent">.</span></h2>
+    </div>
+    <div class="exp-list">
+      <div class="exp-card">
+        <div>
+          <div class="exp-role">Tech Lead — X-Grow AI</div>
+          <div class="exp-company">WACO Services · Remote</div>
+          <ul class="exp-bullets">
+            <li>Defined Go backend architecture exposing REST APIs and MCP servers consumed by LLM agents and automation flows (N8N).</li>
+            <li>Designed async chatbot interaction processing to sustain traffic spikes without latency degradation using workers and queues.</li>
+            <li>Established observability standards (structured logs, metrics, alerts) and team onboarding documentation.</li>
+          </ul>
+        </div>
+        <div class="exp-date">Oct 2025 — Present</div>
+      </div>
+
+      <div class="exp-card">
+        <div>
+          <div class="exp-role">Senior Backend Engineer</div>
+          <div class="exp-company">WACO Services · Remote</div>
+          <ul class="exp-bullets">
+            <li>Designed and implemented microservices in Go and Node.js for internal and third-party integrations, prioritizing concurrency, high availability and low latency.</li>
+            <li>Built CI/CD pipelines on AWS and Azure with GitLab, <strong>significantly reducing deployment time</strong> and eliminating recurring manual errors.</li>
+            <li>Led architecture decisions, standardized integration templates and mentored the team in Go and FastAPI, <strong>improving response times by 80%</strong>.</li>
+          </ul>
+        </div>
+        <div class="exp-date">Aug 2020 — Present</div>
+      </div>
+
+      <div class="exp-card">
+        <div>
+          <div class="exp-role">Software Developer</div>
+          <div class="exp-company">Oktal Desarrollos Tecnológicos · Cali, Colombia</div>
+          <ul class="exp-bullets">
+            <li>Took full ownership of a legacy PHP 5.3 → 7.0 migration end-to-end, <strong>improving response times by 90%</strong> and eliminating tech debt blocking new features.</li>
+            <li>Designed PHP/Laravel web services integrated with external APIs, optimizing critical queries and processes.</li>
+          </ul>
+        </div>
+        <div class="exp-date">Sep 2016 — Aug 2020</div>
+      </div>
+    </div>
+  </div>
+</section>

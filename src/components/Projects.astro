@@ -1,0 +1,393 @@
+---
+---
+
+<style>
+  #projects {
+    padding: 100px 0;
+  }
+
+  .projects-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 20px;
+  }
+
+  .project-card {
+    background: var(--bg2);
+    border: 1px solid var(--border2);
+    border-radius: 12px;
+    padding: 28px;
+    position: relative;
+    overflow: hidden;
+    transition: border-color 0.2s, transform 0.2s;
+  }
+
+  .project-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 2px;
+    background: linear-gradient(90deg, var(--blue), transparent);
+    opacity: 0;
+    transition: opacity 0.2s;
+  }
+
+  .project-card:hover {
+    border-color: rgba(52, 131, 250, 0.3);
+    transform: translateY(-2px);
+  }
+
+  .project-card:hover::before {
+    opacity: 1;
+  }
+
+  .project-card.featured {
+    grid-column: span 2;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 32px;
+    align-items: center;
+  }
+
+  .project-tag {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 10px;
+    padding: 3px 10px;
+    border-radius: 3px;
+    background: var(--blue-dim);
+    border: 1px solid rgba(52, 131, 250, 0.25);
+    color: var(--blue);
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    display: inline-block;
+    margin-bottom: 14px;
+  }
+
+  .project-tag.green-tag {
+    background: var(--green-dim);
+    border-color: rgba(0, 210, 150, 0.25);
+    color: var(--green);
+  }
+
+  .project-name {
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: 22px;
+    font-weight: 800;
+    color: var(--text);
+    margin-bottom: 10px;
+    letter-spacing: -0.5px;
+  }
+
+  .project-desc {
+    font-size: 14px;
+    color: var(--muted);
+    line-height: 1.7;
+    margin-bottom: 18px;
+  }
+
+  .project-metrics {
+    display: flex;
+    gap: 16px;
+    margin-bottom: 18px;
+    flex-wrap: wrap;
+  }
+
+  .metric {
+    text-align: center;
+  }
+
+  .metric .val {
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: 20px;
+    font-weight: 800;
+    color: var(--blue);
+    line-height: 1;
+  }
+
+  .metric .lbl {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 9px;
+    color: var(--muted);
+    text-transform: uppercase;
+    letter-spacing: 1px;
+  }
+
+  .project-stack {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+  }
+
+  .project-stack span {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 11px;
+    padding: 2px 8px;
+    border-radius: 3px;
+    background: var(--bg3);
+    border: 1px solid var(--border2);
+    color: #4a5a70;
+  }
+
+  .arch-diagram {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 8px;
+    padding: 24px;
+    background: var(--bg);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+  }
+
+  .arch-row {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    justify-content: center;
+  }
+
+  .arch-node {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 11px;
+    padding: 6px 14px;
+    border-radius: 6px;
+    border: 1px solid rgba(52, 131, 250, 0.2);
+    background: var(--blue-dim);
+    color: #8899b0;
+    white-space: nowrap;
+  }
+
+  .arch-node.hi {
+    border-color: var(--blue);
+    color: #fff;
+  }
+
+  .arch-node.green {
+    border-color: rgba(0, 210, 150, 0.35);
+    background: var(--green-dim);
+    color: var(--green);
+  }
+
+  .arch-arr {
+    color: rgba(52, 131, 250, 0.35);
+    font-family: monospace;
+    font-size: 14px;
+  }
+
+  .arch-arr-d {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 24px;
+    color: rgba(52, 131, 250, 0.3);
+  }
+
+  .arch-arr-d svg {
+    width: 16px;
+    height: 16px;
+    stroke: rgba(52, 131, 250, 0.35);
+    opacity: 0.8;
+  }
+
+  .section-head {
+    margin-bottom: 48px;
+  }
+
+  .section-tag {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 11px;
+    color: var(--green);
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    margin-bottom: 10px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+
+  .section-tag::before {
+    content: '';
+    width: 20px;
+    height: 1px;
+    background: var(--green);
+  }
+
+  .section-title {
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: 40px;
+    font-weight: 800;
+    letter-spacing: -1px;
+    line-height: 1;
+  }
+
+  .section-title .accent {
+    color: var(--blue);
+  }
+
+  @media (max-width: 900px) {
+    .projects-grid {
+      grid-template-columns: 1fr;
+    }
+
+    .project-card.featured {
+      grid-column: span 1;
+      grid-template-columns: 1fr;
+    }
+
+    .arch-diagram {
+      padding: 18px 12px;
+    }
+  }
+
+  @media (max-width: 700px) {
+    #projects {
+      padding: 72px 0;
+    }
+
+    .section-head {
+      margin-bottom: 36px;
+    }
+
+    .section-title {
+      font-size: 32px;
+    }
+
+    .project-card {
+      padding: 22px;
+    }
+  }
+
+  @media (max-width: 520px) {
+    .section-title {
+      font-size: 28px;
+    }
+
+    .project-metrics {
+      gap: 12px;
+    }
+  }
+</style>
+
+<section id="projects">
+  <div class="container">
+    <div class="section-head">
+      <div class="section-tag">Work</div>
+      <h2 class="section-title">Featured <span class="accent">projects.</span></h2>
+    </div>
+    <div class="projects-grid">
+      <!-- Auth Manager — featured -->
+      <div class="project-card featured">
+        <div>
+          <span class="project-tag">Production · Full Ownership</span>
+          <div class="project-name">Auth Manager</div>
+          <p class="project-desc">
+            Took full ownership after identifying critical design flaws in the previous version.
+            Rebuilt from scratch working directly with the client — defining architecture,
+            versioned REST contracts and data model. Zero authentication incidents post-launch.
+          </p>
+          <div class="project-metrics">
+            <div class="metric">
+              <div class="val">70K+</div>
+              <div class="lbl">Users</div>
+            </div>
+            <div class="metric">
+              <div class="val">5</div>
+              <div class="lbl">Platforms</div>
+            </div>
+            <div class="metric">
+              <div class="val">0</div>
+              <div class="lbl">Incidents</div>
+            </div>
+          </div>
+          <div class="project-stack">
+            <span>Go</span><span>Redis</span><span>SQL Server</span><span>DDD</span><span>Docker</span><span>CI/CD</span>
+          </div>
+        </div>
+        <div class="arch-diagram">
+          <div class="arch-row">
+            <div class="arch-node hi">API Gateway</div>
+          </div>
+          <div class="arch-arr-d">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <line x1="12" y1="5" x2="12" y2="19"></line>
+              <polyline points="19 12 12 19 5 12"></polyline>
+            </svg>
+          </div>
+          <div class="arch-row">
+            <div class="arch-node hi">Auth Service</div>
+            <span class="arch-arr">→</span>
+            <div class="arch-node">User Service</div>
+          </div>
+          <div class="arch-arr-d">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <line x1="12" y1="5" x2="12" y2="19"></line>
+              <polyline points="19 12 12 19 5 12"></polyline>
+            </svg>
+          </div>
+          <div class="arch-row">
+            <div class="arch-node green">Queue · Workers</div>
+          </div>
+          <div class="arch-arr-d">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <line x1="12" y1="5" x2="12" y2="19"></line>
+              <polyline points="19 12 12 19 5 12"></polyline>
+            </svg>
+          </div>
+          <div class="arch-row">
+            <div class="arch-node">SQL Server</div>
+            <span class="arch-arr">·</span>
+            <div class="arch-node green">Redis</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Luxio -->
+      <div class="project-card">
+        <span class="project-tag green-tag">Admin Platform · Private Client</span>
+        <div class="project-name">Centralized Admin Platform</div>
+        <p class="project-desc">
+          Unified scattered admin modules into a single panel, defining the internal standard
+          for admin module development. Automated flat-file record loading, eliminating hours of manual work per cycle.
+        </p>
+        <div class="project-metrics">
+          <div class="metric">
+            <div class="val">28K</div>
+            <div class="lbl">Maintenance</div>
+          </div>
+          <div class="metric">
+            <div class="val">34K</div>
+            <div class="lbl">Investigations</div>
+          </div>
+        </div>
+        <div class="project-stack">
+          <span>Go</span><span>Redis</span><span>SQL Server</span><span>Docker</span>
+        </div>
+      </div>
+
+      <!-- NomadOS -->
+      <div class="project-card">
+        <span class="project-tag">SaaS · Online Learning</span>
+        <div class="project-name">NomadOS</div>
+        <p class="project-desc">
+          Online learning and workflow automation platform. Cloud integrations on AWS with end-to-end
+          continuous deployment. Active user base with paying memberships.
+        </p>
+        <div class="project-metrics">
+          <div class="metric">
+            <div class="val">8K</div>
+            <div class="lbl">Users</div>
+          </div>
+          <div class="metric">
+            <div class="val">~2K</div>
+            <div class="lbl">Memberships</div>
+          </div>
+        </div>
+        <div class="project-stack">
+          <span>Go</span><span>Laravel</span><span>Node.js</span><span>AWS</span><span>PostgreSQL</span><span>GitLab CI/CD</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

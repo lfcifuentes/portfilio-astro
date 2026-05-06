@@ -1,0 +1,16 @@
+{
+  "name": "portfolio-astro",
+  "version": "1.0.0",
+  "description": "Luis Fernando Cifuentes - Senior Backend Engineer Portfolio",
+  "type": "module",
+  "scripts": {
+    "dev": "astro dev",
+    "build": "astro build",
+    "preview": "astro preview",
+    "astro": "astro"
+  },
+  "dependencies": {
+    "astro": "^4.0.0"
+  },
+  "devDependencies": {}
+}

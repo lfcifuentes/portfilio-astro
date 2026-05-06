@@ -1,0 +1,410 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>lcifuentes.dev — Logo SVG Export</title>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,700;12..96,800;12..96,900&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+<style>
+  * { margin:0; padding:0; box-sizing:border-box; }
+  body {
+    background: #0a0e1a;
+    font-family: 'JetBrains Mono', monospace;
+    padding: 40px 36px;
+    color: #e8eaf0;
+  }
+
+  body::before {
+    content:'';
+    position:fixed; inset:0;
+    background-image:
+      linear-gradient(rgba(52,131,250,0.07) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(52,131,250,0.07) 1px, transparent 1px);
+    background-size: 48px 48px;
+    pointer-events:none;
+    z-index:0;
+  }
+
+  .page { position:relative; z-index:1; }
+
+  .page-tag {
+    font-size: 10px;
+    color: #00d296;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    margin-bottom: 6px;
+    display:flex; align-items:center; gap:10px;
+  }
+  .page-tag::before { content:''; width:18px; height:1px; background:#00d296; }
+
+  .page-title {
+    font-family: 'Bricolage Grotesque', sans-serif;
+    font-size: 32px;
+    font-weight: 900;
+    letter-spacing: -1px;
+    color: #fff;
+    margin-bottom: 4px;
+  }
+  .page-title span { color: #3483FA; }
+
+  .page-sub {
+    font-size: 11px;
+    color: #3a4a60;
+    letter-spacing: 1px;
+    margin-bottom: 44px;
+  }
+
+  /* grid of variants */
+  .variants {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 20px;
+    margin-bottom: 32px;
+  }
+
+  .variant {
+    border-radius: 14px;
+    overflow: hidden;
+    border: 1px solid rgba(255,255,255,0.05);
+  }
+
+  .variant-label {
+    padding: 10px 16px;
+    background: #0f1420;
+    border-bottom: 1px solid rgba(255,255,255,0.04);
+    font-size: 9px;
+    color: #2a3a50;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .use-tag {
+    font-size: 9px;
+    padding: 2px 8px;
+    border-radius: 2px;
+    background: rgba(52,131,250,0.08);
+    border: 1px solid rgba(52,131,250,0.2);
+    color: #3483FA;
+    letter-spacing: 1px;
+  }
+
+  .variant-stage {
+    padding: 40px 32px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 160px;
+  }
+
+  .v-dark   { background: #060a12; }
+  .v-mid    { background: #0f1420; }
+  .v-blue   { background: #3483FA; }
+  .v-white  { background: #f0f4ff; }
+
+  /* download hint */
+  .download-hint {
+    font-size: 10px;
+    color: #2a3a50;
+    letter-spacing: 1px;
+    margin-top: 6px;
+    text-align: center;
+  }
+
+  /* favicon grid */
+  .fav-section {
+    margin-bottom: 32px;
+  }
+
+  .section-title {
+    font-size: 10px;
+    color: #2a3a50;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    margin-bottom: 16px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+  .section-title::after {
+    content:'';
+    flex:1;
+    height:1px;
+    background:rgba(255,255,255,0.04);
+  }
+
+  .fav-row {
+    display: flex;
+    gap: 20px;
+    align-items: flex-end;
+    flex-wrap: wrap;
+  }
+
+  .fav-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+  }
+
+  .fav-size {
+    font-size: 9px;
+    color: #3a4a60;
+    letter-spacing: 1px;
+  }
+
+  /* horizontal compact logo */
+  .logo-horizontal {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+  }
+
+  /* vertical stacked logo */
+  .logo-vertical {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+  }
+
+  /* icon only */
+  .logo-icon-only {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  /* wordmark only */
+  .logo-wordmark {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 2px;
+  }
+
+  /* social signature */
+  .logo-signature {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+  }
+
+  @keyframes blink { 0%,100%{opacity:1} 50%{opacity:0} }
+</style>
+</head>
+<body>
+<div class="page">
+
+  <div class="page-tag">Logo System · Option B</div>
+  <div class="page-title">lcifuentes<span>.dev</span></div>
+  <p class="page-sub">// icon + wordmark · all variants · export ready</p>
+
+  <!-- VARIANTS GRID -->
+  <div class="variants">
+
+    <!-- 1. HORIZONTAL DARK (main) -->
+    <div class="variant">
+      <div class="variant-label">
+        <span>01 · Horizontal · Dark</span>
+        <span class="use-tag">Portfolio · README</span>
+      </div>
+      <div class="variant-stage v-dark">
+        <svg width="280" height="56" viewBox="0 0 280 56" xmlns="http://www.w3.org/2000/svg">
+          <defs>
+            <style>
+              @import url('https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,900&family=JetBrains+Mono:wght@700&display=swap');
+            </style>
+          </defs>
+          <!-- icon box -->
+          <rect x="0" y="4" width="48" height="48" rx="11" fill="#3483FA"/>
+          <text x="8" y="37" font-family="'JetBrains Mono', monospace" font-size="20" font-weight="700" fill="white" letter-spacing="-0.5">lc</text>
+          <!-- green dot status -->
+          <circle cx="43" cy="9" r="5" fill="#00d296"/>
+          <!-- wordmark -->
+          <text x="62" y="31" font-family="'Bricolage Grotesque', sans-serif" font-size="26" font-weight="900" fill="white" letter-spacing="-1">lcifuentes</text>
+          <!-- domain -->
+          <text x="63" y="46" font-family="'JetBrains Mono', monospace" font-size="10" font-weight="400" fill="#3483FA" letter-spacing="1">.dev</text>
+          <!-- tagline -->
+          <text x="114" y="46" font-family="'JetBrains Mono', monospace" font-size="10" font-weight="400" fill="#3a4a60" letter-spacing="0.5">// backend engineer</text>
+        </svg>
+      </div>
+      <div class="download-hint">→ uso principal: portfolio, proposals, GitHub README</div>
+    </div>
+
+    <!-- 2. HORIZONTAL WHITE -->
+    <div class="variant">
+      <div class="variant-label">
+        <span>02 · Horizontal · Light</span>
+        <span class="use-tag">Propuestas · Docs</span>
+      </div>
+      <div class="variant-stage v-white">
+        <svg width="280" height="56" viewBox="0 0 280 56" xmlns="http://www.w3.org/2000/svg">
+          <!-- icon box -->
+          <rect x="0" y="4" width="48" height="48" rx="11" fill="#3483FA"/>
+          <text x="8" y="37" font-family="'JetBrains Mono', monospace" font-size="20" font-weight="700" fill="white" letter-spacing="-0.5">lc</text>
+          <circle cx="43" cy="9" r="5" fill="#00a876"/>
+          <!-- wordmark dark -->
+          <text x="62" y="31" font-family="'Bricolage Grotesque', sans-serif" font-size="26" font-weight="900" fill="#0a0e1a" letter-spacing="-1">lcifuentes</text>
+          <text x="63" y="46" font-family="'JetBrains Mono', monospace" font-size="10" font-weight="400" fill="#3483FA" letter-spacing="1">.dev</text>
+          <text x="114" y="46" font-family="'JetBrains Mono', monospace" font-size="10" font-weight="400" fill="#9aa8bc" letter-spacing="0.5">// backend engineer</text>
+        </svg>
+      </div>
+      <div class="download-hint">→ uso: documentos Word, PDFs, propuestas a clientes</div>
+    </div>
+
+    <!-- 3. ICON ON BLUE (social avatar) -->
+    <div class="variant">
+      <div class="variant-label">
+        <span>03 · Icon · Blue BG</span>
+        <span class="use-tag">LinkedIn · GitHub avatar</span>
+      </div>
+      <div class="variant-stage v-blue">
+        <svg width="120" height="120" viewBox="0 0 120 120" xmlns="http://www.w3.org/2000/svg">
+          <rect x="0" y="0" width="120" height="120" rx="28" fill="#2570e0"/>
+          <text x="14" y="82" font-family="'JetBrains Mono', monospace" font-size="58" font-weight="700" fill="white" letter-spacing="-2">lc</text>
+          <circle cx="100" cy="20" r="10" fill="#00d296"/>
+        </svg>
+      </div>
+      <div class="download-hint">→ uso: avatar LinkedIn, avatar GitHub, app icon</div>
+    </div>
+
+    <!-- 4. COMPACT DARK (nav / header) -->
+    <div class="variant">
+      <div class="variant-label">
+        <span>04 · Compact · Nav</span>
+        <span class="use-tag">Nav · Header · Footer</span>
+      </div>
+      <div class="variant-stage v-dark">
+        <svg width="180" height="36" viewBox="0 0 180 36" xmlns="http://www.w3.org/2000/svg">
+          <!-- small icon -->
+          <rect x="0" y="0" width="36" height="36" rx="8" fill="#3483FA"/>
+          <text x="5" y="26" font-family="'JetBrains Mono', monospace" font-size="16" font-weight="700" fill="white" letter-spacing="-0.5">lc</text>
+          <circle cx="31" cy="6" r="4" fill="#00d296"/>
+          <!-- compact wordmark -->
+          <text x="46" y="24" font-family="'Bricolage Grotesque', sans-serif" font-size="20" font-weight="900" fill="white" letter-spacing="-0.8">lcifuentes</text>
+          <text x="47" y="34" font-family="'JetBrains Mono', monospace" font-size="9" font-weight="400" fill="#3483FA" letter-spacing="2">.dev</text>
+        </svg>
+      </div>
+      <div class="download-hint">→ uso: navbar portfolio, email signature, footer</div>
+    </div>
+
+  </div>
+
+  <!-- FAVICON SIZES -->
+  <div class="fav-section">
+    <div class="section-title">Favicon · App Icon sizes</div>
+    <div class="fav-row">
+
+      <div class="fav-item">
+        <svg width="96" height="96" viewBox="0 0 96 96" xmlns="http://www.w3.org/2000/svg">
+          <rect width="96" height="96" rx="22" fill="#3483FA"/>
+          <text x="10" y="66" font-family="'JetBrains Mono', monospace" font-size="46" font-weight="700" fill="white" letter-spacing="-2">lc</text>
+          <circle cx="80" cy="16" r="9" fill="#00d296"/>
+        </svg>
+        <div class="fav-size">96px · App Store</div>
+      </div>
+
+      <div class="fav-item">
+        <svg width="64" height="64" viewBox="0 0 64 64" xmlns="http://www.w3.org/2000/svg">
+          <rect width="64" height="64" rx="14" fill="#3483FA"/>
+          <text x="6" y="44" font-family="'JetBrains Mono', monospace" font-size="30" font-weight="700" fill="white" letter-spacing="-1">lc</text>
+          <circle cx="53" cy="11" r="7" fill="#00d296"/>
+        </svg>
+        <div class="fav-size">64px · OG image</div>
+      </div>
+
+      <div class="fav-item">
+        <svg width="48" height="48" viewBox="0 0 48 48" xmlns="http://www.w3.org/2000/svg">
+          <rect width="48" height="48" rx="10" fill="#3483FA"/>
+          <text x="4" y="34" font-family="'JetBrains Mono', monospace" font-size="22" font-weight="700" fill="white" letter-spacing="-1">lc</text>
+          <circle cx="40" cy="8" r="5" fill="#00d296"/>
+        </svg>
+        <div class="fav-size">48px · PWA</div>
+      </div>
+
+      <div class="fav-item">
+        <svg width="32" height="32" viewBox="0 0 32 32" xmlns="http://www.w3.org/2000/svg">
+          <rect width="32" height="32" rx="7" fill="#3483FA"/>
+          <text x="2" y="23" font-family="'JetBrains Mono', monospace" font-size="15" font-weight="700" fill="white" letter-spacing="-0.5">lc</text>
+          <circle cx="27" cy="5" r="4" fill="#00d296"/>
+        </svg>
+        <div class="fav-size">32px · Favicon</div>
+      </div>
+
+      <div class="fav-item">
+        <svg width="16" height="16" viewBox="0 0 16 16" xmlns="http://www.w3.org/2000/svg">
+          <rect width="16" height="16" rx="3" fill="#3483FA"/>
+          <text x="1" y="12" font-family="'JetBrains Mono', monospace" font-size="8" font-weight="700" fill="white" letter-spacing="-0.3">lc</text>
+        </svg>
+        <div class="fav-size">16px · Favicon</div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- EMAIL SIGNATURE -->
+  <div class="fav-section">
+    <div class="section-title">Email Signature</div>
+    <div style="background:#0f1420; border:1px solid rgba(255,255,255,0.05); border-radius:12px; padding:28px 32px; display:inline-block;">
+      <svg width="320" height="72" viewBox="0 0 320 72" xmlns="http://www.w3.org/2000/svg">
+        <!-- avatar -->
+        <rect x="0" y="8" width="52" height="52" rx="12" fill="#3483FA"/>
+        <text x="9" y="41" font-family="'JetBrains Mono', monospace" font-size="22" font-weight="700" fill="white" letter-spacing="-0.5">lc</text>
+        <circle cx="46" cy="13" r="5" fill="#00d296"/>
+        <!-- divider -->
+        <line x1="66" y1="12" x2="66" y2="56" stroke="rgba(52,131,250,0.2)" stroke-width="1"/>
+        <!-- name -->
+        <text x="78" y="30" font-family="'Bricolage Grotesque', sans-serif" font-size="18" font-weight="900" fill="white" letter-spacing="-0.5">Luis Fernando Cifuentes</text>
+        <!-- role -->
+        <text x="79" y="44" font-family="'JetBrains Mono', monospace" font-size="10" fill="#3483FA" letter-spacing="0.5">Senior Backend Engineer</text>
+        <!-- domain -->
+        <text x="79" y="57" font-family="'JetBrains Mono', monospace" font-size="10" fill="#3a4a60" letter-spacing="0.5">lcifuentes.dev · lfcifuentes28@gmail.com</text>
+      </svg>
+    </div>
+  </div>
+
+  <!-- USAGE GUIDE -->
+  <div class="fav-section">
+    <div class="section-title">Guía de uso</div>
+    <div style="display:grid; grid-template-columns:repeat(3,1fr); gap:12px;">
+
+      <div style="background:#0f1420; border:1px solid rgba(255,255,255,0.04); border-radius:10px; padding:16px;">
+        <div style="font-size:9px; color:#00d296; letter-spacing:2px; text-transform:uppercase; margin-bottom:10px;">✓ Usar</div>
+        <div style="font-size:12px; color:#6b7a90; line-height:1.8;">
+          · Variante dark en portfolio<br>
+          · Variante light en propuestas PDF<br>
+          · Icon solo como avatar<br>
+          · Compact en navbar<br>
+          · Signature en emails
+        </div>
+      </div>
+
+      <div style="background:#0f1420; border:1px solid rgba(255,255,255,0.04); border-radius:10px; padding:16px;">
+        <div style="font-size:9px; color:#ef4444; letter-spacing:2px; text-transform:uppercase; margin-bottom:10px;">✗ Evitar</div>
+        <div style="font-size:12px; color:#6b7a90; line-height:1.8;">
+          · Distorsionar proporciones<br>
+          · Cambiar los colores de marca<br>
+          · Usar sobre fotos complejas<br>
+          · Reducir bajo 16px<br>
+          · Agregar efectos o sombras
+        </div>
+      </div>
+
+      <div style="background:#0f1420; border:1px solid rgba(255,255,255,0.04); border-radius:10px; padding:16px;">
+        <div style="font-size:9px; color:#3483FA; letter-spacing:2px; text-transform:uppercase; margin-bottom:10px;">Paleta</div>
+        <div style="font-size:12px; color:#6b7a90; line-height:2;">
+          <span style="color:#3483FA">■</span> #3483FA · Primary<br>
+          <span style="color:#00d296">■</span> #00D296 · Accent<br>
+          <span style="color:#0a0e1a">■</span> #0A0E1A · Background<br>
+          <span style="color:#fff">■</span> #FFFFFF · Text
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+</div>
+</body>
+</html>

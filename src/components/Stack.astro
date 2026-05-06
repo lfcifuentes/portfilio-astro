@@ -1,0 +1,186 @@
+---
+---
+
+<style>
+  #stack {
+    padding: 100px 0;
+    background: var(--bg2);
+  }
+
+  .stack-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 16px;
+  }
+
+  .stack-card {
+    background: var(--bg);
+    border: 1px solid var(--border2);
+    border-radius: 10px;
+    padding: 20px;
+    transition: border-color 0.2s, transform 0.2s;
+  }
+
+  .stack-card:hover {
+    border-color: var(--blue);
+    transform: translateY(-2px);
+  }
+
+  .stack-card-title {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 10px;
+    color: var(--green);
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    margin-bottom: 14px;
+  }
+
+  .stack-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+  }
+
+  .stack-tag {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 11px;
+    padding: 3px 10px;
+    border-radius: 3px;
+    background: var(--bg2);
+    border: 1px solid var(--border2);
+    color: var(--muted);
+  }
+
+  .stack-tag.hi {
+    background: var(--blue-dim);
+    border-color: rgba(52, 131, 250, 0.3);
+    color: var(--blue);
+  }
+
+  .section-head {
+    margin-bottom: 48px;
+  }
+
+  .section-tag {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 11px;
+    color: var(--green);
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    margin-bottom: 10px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+
+  .section-tag::before {
+    content: '';
+    width: 20px;
+    height: 1px;
+    background: var(--green);
+  }
+
+  .section-title {
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: 40px;
+    font-weight: 800;
+    letter-spacing: -1px;
+    line-height: 1;
+  }
+
+  .section-title .accent {
+    color: var(--blue);
+  }
+
+  @media (max-width: 900px) {
+    .stack-grid {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+
+  @media (max-width: 700px) {
+    #stack {
+      padding: 72px 0;
+    }
+
+    .section-head {
+      margin-bottom: 36px;
+    }
+
+    .section-title {
+      font-size: 32px;
+    }
+
+    .stack-grid {
+      grid-template-columns: 1fr;
+    }
+  }
+
+  @media (max-width: 520px) {
+    .section-title {
+      font-size: 28px;
+    }
+  }
+</style>
+
+<section id="stack">
+  <div class="container">
+    <div class="section-head">
+      <div class="section-tag">Technology</div>
+      <h2 class="section-title">My <span class="accent">stack.</span></h2>
+    </div>
+    <div class="stack-grid">
+      <div class="stack-card">
+        <div class="stack-card-title">Core Backend</div>
+        <div class="stack-tags">
+          <span class="stack-tag hi">Go</span>
+          <span class="stack-tag hi">goroutines</span>
+          <span class="stack-tag hi">channels</span>
+          <span class="stack-tag">Python</span>
+          <span class="stack-tag">FastAPI</span>
+          <span class="stack-tag">Node.js</span>
+          <span class="stack-tag">TypeScript</span>
+          <span class="stack-tag">PHP</span>
+          <span class="stack-tag">Laravel</span>
+        </div>
+      </div>
+      <div class="stack-card">
+        <div class="stack-card-title">Architecture</div>
+        <div class="stack-tags">
+          <span class="stack-tag hi">Microservices</span>
+          <span class="stack-tag hi">Event-Driven</span>
+          <span class="stack-tag hi">DDD</span>
+          <span class="stack-tag">Clean Architecture</span>
+          <span class="stack-tag">REST</span>
+          <span class="stack-tag">OAuth 2.0</span>
+          <span class="stack-tag">SOLID</span>
+          <span class="stack-tag">TDD</span>
+        </div>
+      </div>
+      <div class="stack-card">
+        <div class="stack-card-title">Cloud & DevOps</div>
+        <div class="stack-tags">
+          <span class="stack-tag hi">Kubernetes</span>
+          <span class="stack-tag hi">AWS</span>
+          <span class="stack-tag hi">Docker</span>
+          <span class="stack-tag">Azure</span>
+          <span class="stack-tag">GitLab CI/CD</span>
+          <span class="stack-tag">Infra-as-Code</span>
+        </div>
+      </div>
+      <div class="stack-card">
+        <div class="stack-card-title">Data & Observability</div>
+        <div class="stack-tags">
+          <span class="stack-tag hi">Redis</span>
+          <span class="stack-tag hi">PostgreSQL</span>
+          <span class="stack-tag">MongoDB</span>
+          <span class="stack-tag">MySQL</span>
+          <span class="stack-tag">Workers</span>
+          <span class="stack-tag">Queues</span>
+          <span class="stack-tag">Structured logging</span>
+          <span class="stack-tag">SLA monitoring</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

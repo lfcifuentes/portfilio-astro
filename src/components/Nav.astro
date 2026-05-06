@@ -1,0 +1,246 @@
+---
+import Logo from './Logo.astro';
+---
+
+<style>
+  nav {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 100;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 18px 60px;
+    background: rgba(10, 14, 26, 0.85);
+    backdrop-filter: blur(12px);
+    border-bottom: 1px solid var(--border2);
+  }
+
+  .nav-logo {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    text-decoration: none;
+    transition: opacity 0.2s;
+  }
+
+  .nav-logo:hover {
+    opacity: 0.8;
+  }
+
+  .nav-logo-icon {
+    width: 28px;
+    height: 28px;
+    flex-shrink: 0;
+  }
+
+  .nav-logo-text {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 13px;
+    font-weight: 600;
+    letter-spacing: 2px;
+    background: linear-gradient(135deg, var(--blue) 0%, var(--green) 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  .nav-links {
+    display: flex;
+    gap: 32px;
+    list-style: none;
+  }
+
+  .nav-links a {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 12px;
+    color: var(--muted);
+    text-decoration: none;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    transition: color 0.2s;
+  }
+
+  .nav-links a:hover {
+    color: var(--text);
+  }
+
+  .nav-cta {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 12px;
+    padding: 8px 20px;
+    border: 1px solid var(--blue);
+    border-radius: 4px;
+    color: var(--blue);
+    text-decoration: none;
+    letter-spacing: 1px;
+    transition: all 0.2s;
+  }
+
+  .nav-cta:hover {
+    background: var(--blue);
+    color: #fff;
+  }
+
+  .nav-mobile-toggle {
+    display: none;
+    background: transparent;
+    border: 1px solid var(--border2);
+    color: var(--text);
+    width: 40px;
+    height: 40px;
+    border-radius: 6px;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+  }
+
+  .nav-mobile-toggle span {
+    width: 16px;
+    height: 2px;
+    background: currentColor;
+    position: relative;
+    transition: transform 0.2s ease;
+  }
+
+  .nav-mobile-toggle span::before,
+  .nav-mobile-toggle span::after {
+    content: '';
+    position: absolute;
+    width: 16px;
+    height: 2px;
+    background: currentColor;
+    left: 0;
+  }
+
+  .nav-mobile-toggle span::before {
+    top: -5px;
+  }
+
+  .nav-mobile-toggle span::after {
+    top: 5px;
+  }
+
+  .nav-mobile-panel {
+    display: none;
+    position: absolute;
+    top: calc(100% + 10px);
+    right: 24px;
+    left: 24px;
+    background: rgba(10, 14, 26, 0.98);
+    border: 1px solid var(--border2);
+    border-radius: 10px;
+    padding: 16px;
+    box-shadow: 0 18px 40px rgba(0, 0, 0, 0.35);
+  }
+
+  .nav-mobile-links {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  .nav-mobile-links a {
+    display: block;
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 12px;
+    color: var(--muted);
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    text-decoration: none;
+    border: 1px solid var(--border2);
+    border-radius: 6px;
+    padding: 10px 12px;
+  }
+
+  .nav-mobile-links a:hover {
+    color: var(--text);
+    border-color: var(--blue);
+  }
+
+  .nav-mobile-contact {
+    margin-top: 12px;
+    display: block;
+    text-align: center;
+  }
+
+  nav.menu-open .nav-mobile-panel {
+    display: block;
+  }
+
+  @media (max-width: 900px) {
+    nav {
+      padding: 16px 20px;
+    }
+
+    .nav-links {
+      display: none;
+    }
+
+    .nav-cta {
+      display: none;
+    }
+
+    .nav-mobile-toggle {
+      display: inline-flex;
+    }
+  }
+</style>
+
+<nav>
+  <a href="#" class="nav-logo" aria-label="Luis Fernando Cifuentes - Portfolio">
+    <Logo class="nav-logo-icon" />
+  </a>
+
+  <ul class="nav-links">
+    <li><a href="#about">About</a></li>
+    <li><a href="#stack">Stack</a></li>
+    <li><a href="#projects">Projects</a></li>
+    <li><a href="#experience">Experience</a></li>
+  </ul>
+
+  <a href="mailto:lfcifuentes28@gmail.com" class="nav-cta">contact →</a>
+
+  <button
+    class="nav-mobile-toggle"
+    aria-label="Toggle menu"
+    aria-expanded="false"
+    aria-controls="mobile-menu"
+  >
+    <span></span>
+  </button>
+
+  <div class="nav-mobile-panel" id="mobile-menu">
+    <ul class="nav-mobile-links">
+      <li><a href="#about">About</a></li>
+      <li><a href="#stack">Stack</a></li>
+      <li><a href="#projects">Projects</a></li>
+      <li><a href="#experience">Experience</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+    <a href="mailto:lfcifuentes28@gmail.com" class="nav-cta nav-mobile-contact">contact →</a>
+  </div>
+</nav>
+
+<script>
+  const nav = document.querySelector('nav');
+  const navToggle = document.querySelector('.nav-mobile-toggle');
+  const mobileLinks = document.querySelectorAll('.nav-mobile-panel a');
+
+  if (nav && navToggle) {
+    navToggle.addEventListener('click', () => {
+      const isOpen = nav.classList.toggle('menu-open');
+      navToggle.setAttribute('aria-expanded', String(isOpen));
+    });
+
+    mobileLinks.forEach((link) => {
+      link.addEventListener('click', () => {
+        nav.classList.remove('menu-open');
+        navToggle.setAttribute('aria-expanded', 'false');
+      });
+    });
+  }
+</script>

@@ -1,0 +1,43 @@
+---
+interface Props {
+  size?: 'small' | 'large';
+  class?: string;
+}
+
+const { size = 'large', class: className } = Astro.props;
+---
+
+{size === 'small' && (
+  <svg width="120" height="120" viewBox="0 0 120 120" xmlns="http://www.w3.org/2000/svg">
+    <rect x="0" y="0" width="120" height="120" rx="28" fill="#2570e0"></rect>
+    <text x="14" y="82" font-family="'JetBrains Mono', monospace" font-size="58" font-weight="700" fill="white" letter-spacing="-2">lc</text>
+    <circle cx="100" cy="20" r="10" fill="#00d296"></circle>
+  </svg>
+)}
+
+{size === 'large' && (
+  <svg width="280" height="56" viewBox="0 0 280 56" xmlns="http://www.w3.org/2000/svg">
+    <defs>
+      <style>
+        @import url('https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,900&amp;family=JetBrains+Mono:wght@700&amp;display=swap');
+      </style>
+    </defs>
+    <!-- icon box -->
+    <rect x="0" y="4" width="48" height="48" rx="11" fill="#3483FA"></rect>
+    <text x="8" y="37" font-family="'JetBrains Mono', monospace" font-size="20" font-weight="700" fill="white" letter-spacing="-0.5">lc</text>
+    <!-- green dot status -->
+    <circle cx="43" cy="9" r="5" fill="#00d296"></circle>
+    <!-- wordmark -->
+    <text x="62" y="31" font-family="'Bricolage Grotesque', sans-serif" font-size="26" font-weight="900" fill="white" letter-spacing="-1">lcifuentes</text>
+    <!-- domain -->
+    <text x="63" y="46" font-family="'JetBrains Mono', monospace" font-size="10" font-weight="400" fill="#3483FA" letter-spacing="1">.dev</text>
+    <!-- tagline -->
+    <text x="114" y="46" font-family="'JetBrains Mono', monospace" font-size="10" font-weight="400" fill="#3a4a60" letter-spacing="0.5">// backend engineer</text>
+  </svg>
+)}
+
+<style>
+  svg {
+    display: block;
+  }
+</style>

@@ -11,7 +11,7 @@ interface Props {
 
 const {
   title,
-  description = 'Senior Backend Engineer portfolio by Luis Fernando Cifuentes. Specializing in scalable systems, backend architecture, and high-performance APIs.',
+  description = 'Luis Fernando Cifuentes — Senior Backend Engineer in Go specializing in distributed systems, event-driven architecture and Kubernetes. Based in Cali, Colombia.',
   canonicalURL,
   ogImage = '/favicon.svg',
   noindex = false,
@@ -41,6 +41,7 @@ const personSchema = {
     <meta name="author" content="Luis Fernando Cifuentes" />
     <meta name="robots" content={noindex ? 'noindex, nofollow' : 'index, follow'} />
     <meta name="theme-color" content="#0a0e1a" />
+    <link rel="sitemap" href="/sitemap-index.xml" />
     <link rel="canonical" href={finalCanonicalURL} />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="icon" href="/favicon.ico" sizes="any" />

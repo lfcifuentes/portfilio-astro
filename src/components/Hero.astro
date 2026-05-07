@@ -7,6 +7,7 @@
     display: flex;
     align-items: center;
     padding-top: 80px;
+    overflow: hidden;
   }
 
   .hero-inner {
@@ -331,6 +332,55 @@
     .t-line {
       font-size: 12px;
       gap: 7px;
+    }
+  }
+
+  @media (max-width: 375px) {
+    #hero {
+      padding-top: 70px;
+    }
+
+    .hero-name {
+      font-size: clamp(40px, 5vw, 52px);
+      letter-spacing: -1px;
+    }
+
+    .hero-eyebrow {
+      font-size: 10px;
+      letter-spacing: 2px;
+    }
+
+    .hero-role {
+      font-size: 11px;
+      letter-spacing: 1.5px;
+    }
+
+    .hero-desc {
+      font-size: 13px;
+      line-height: 1.6;
+    }
+
+    .terminal-card {
+      border-radius: 8px;
+    }
+
+    .term-bar {
+      padding: 10px 12px;
+    }
+
+    .term-body {
+      padding: 14px;
+    }
+
+    .t-line {
+      font-size: 11px;
+      gap: 6px;
+    }
+
+    .btn-primary,
+    .btn-outline {
+      font-size: 12px;
+      padding: 10px 20px;
     }
   }
 </style>

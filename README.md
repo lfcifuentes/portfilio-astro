@@ -130,7 +130,7 @@ All content is personal and proprietary. Built with ❤️ using Astro.
 ## 🔗 Links
 
 - [Astro Documentation](https://docs.astro.build)
-- [Portfolio Live](https://lf.dev) (when deployed)
+- [Portfolio Live](https://lcifuentes.dev) (when deployed)
 
 ---
 

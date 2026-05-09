@@ -48,6 +48,22 @@ export interface SiteMessages {
     impact3: string;
     impact4: string;
   };
+  stack: {
+    sectionTag: string;
+    titlePrefix: string;
+    titleAccent: string;
+  };
+  projects: {
+    sectionTag: string;
+    titlePrefix: string;
+    titleAccent: string;
+  };
+  personalProjects: {
+    sectionTag: string;
+    titlePrefix: string;
+    titleAccent: string;
+    subtitle: string;
+  };
 }
 
 export const messages: Record<Locale, SiteMessages> = {
@@ -92,14 +108,30 @@ export const messages: Record<Locale, SiteMessages> = {
       sectionTag: 'About',
       titlePrefix: 'Who I',
       titleAccent: 'am.',
-      p1: 'Backend Engineer with +8 years building distributed systems and high-performance APIs in Go. I specialize in event-driven architectures, async processing with workers and queues, and production observability.',
+      p1: 'Backend Engineer with +8 years building distributed systems and high-performance APIs in Python and Go. I specialize in FastAPI services, event-driven architectures, async processing with workers and queues, and production observability.',
       p2: 'I take full ownership of problems from design to production. My track record includes rebuilding systems with critical design flaws, working directly with clients to arrive at the right solution. A key example: an authentication system rebuilt from scratch, now serving 70K+ users across 5 platforms with zero incidents post-launch.',
       p3: 'I have built and technically led marketplace, fintech and SaaS platforms deployed on AWS and Azure over Kubernetes with CI/CD. I design solutions oriented around availability, latency and cost, and mentor teams to scale delivery without sacrificing quality.',
       p4: 'I am a balanced and composed problem-solver, especially in high-pressure project situations. In leadership roles, I naturally act as a mediator and adapt quickly to changing constraints. I consistently mentor teammates and bring a meticulous, detail-oriented, and analytical mindset to architecture and delivery.',
       impact1: 'Users served by Auth Manager, rebuilt from scratch with zero post-launch incidents',
       impact2: 'Response time improvement after migrating services to Go + FastAPI',
-      impact3: 'Records managed in Luxio (28K maintenance + 34K investigations) with background notifications',
+      impact3: 'Records managed in a centralized admin platform (28K maintenance + 34K investigations) with background notifications',
       impact4: 'Registered users on NomadOS with ~2K active or historical memberships',
+    },
+    stack: {
+      sectionTag: 'Technology',
+      titlePrefix: 'My',
+      titleAccent: 'stack.',
+    },
+    projects: {
+      sectionTag: 'Featured work',
+      titlePrefix: 'Professional',
+      titleAccent: 'projects.',
+    },
+    personalProjects: {
+      sectionTag: 'Side work',
+      titlePrefix: 'Personal',
+      titleAccent: 'projects.',
+      subtitle: 'Front-end experiments, tools, and side projects built on my own time.',
     },
   },
   es: {
@@ -143,14 +175,30 @@ export const messages: Record<Locale, SiteMessages> = {
       sectionTag: 'Sobre mí',
       titlePrefix: 'Quién',
       titleAccent: 'soy.',
-      p1: 'Backend Engineer con +8 años construyendo sistemas distribuidos y APIs de alto rendimiento en Go. Me especializo en arquitecturas orientadas a eventos, procesamiento asíncrono con workers y colas, y observabilidad en producción.',
+      p1: 'Backend Engineer con +8 años construyendo sistemas distribuidos y APIs de alto rendimiento en Python y Go. Me especializo en servicios con FastAPI, arquitecturas orientadas a eventos, procesamiento asíncrono con workers y colas, y observabilidad en producción.',
       p2: 'Asumo ownership completo de los problemas desde diseño hasta producción. Mi trayectoria incluye reconstruir sistemas con fallos críticos de diseño, trabajando directamente con clientes para llegar a la solución correcta. Ejemplo clave: un sistema de autenticación reconstruido desde cero, hoy sirviendo a 70K+ usuarios en 5 plataformas con cero incidentes post-lanzamiento.',
       p3: 'He construido y liderado técnicamente plataformas de marketplace, fintech y SaaS desplegadas en AWS y Azure sobre Kubernetes con CI/CD. Diseño soluciones orientadas a disponibilidad, latencia y costo, y mentoreo equipos para escalar la entrega sin sacrificar calidad.',
       p4: 'Soy un profesional equilibrado y sereno al gestionar problemas, especialmente en contextos de alta presión. En roles de liderazgo actúo naturalmente como mediador y me adapto rápido a cambios de contexto. Mentoreo constantemente a otras personas y aporto una mentalidad meticulosa, detallista y analítica en arquitectura y entrega.',
       impact1: 'Usuarios atendidos por Auth Manager, reconstruido desde cero con cero incidentes post-lanzamiento',
       impact2: 'Mejora en tiempos de respuesta después de migrar servicios a Go + FastAPI',
-      impact3: 'Registros gestionados en Luxio (28K mantenimiento + 34K investigaciones) con notificaciones en segundo plano',
+      impact3: 'Registros gestionados en una plataforma de administración centralizada (28K mantenimiento + 34K investigaciones) con notificaciones en segundo plano',
       impact4: 'Usuarios registrados en NomadOS con ~2K membresías activas o históricas',
+    },
+    stack: {
+      sectionTag: 'Tecnología',
+      titlePrefix: 'Mi',
+      titleAccent: 'stack.',
+    },
+    projects: {
+      sectionTag: 'Trabajo destacado',
+      titlePrefix: 'Proyectos',
+      titleAccent: 'profesionales.',
+    },
+    personalProjects: {
+      sectionTag: 'Proyectos personales',
+      titlePrefix: 'Proyectos',
+      titleAccent: 'personales.',
+      subtitle: 'Experimentos de front-end, herramientas y side projects construidos en mi tiempo personal.',
     },
   },
 };

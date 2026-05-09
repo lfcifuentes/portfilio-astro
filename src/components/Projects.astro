@@ -1,4 +1,19 @@
 ---
+interface Props {
+  content?: {
+    sectionTag: string;
+    titlePrefix: string;
+    titleAccent: string;
+  };
+}
+
+const {
+  content = {
+    sectionTag: 'Featured work',
+    titlePrefix: 'Professional',
+    titleAccent: 'projects.',
+  },
+} = Astro.props as Props;
 ---
 
 <style>
@@ -354,8 +369,8 @@
 <section id="projects">
   <div class="container">
     <div class="section-head">
-      <div class="section-tag">Featured work</div>
-      <h2 class="section-title">Professional <span class="accent">projects.</span></h2>
+      <div class="section-tag">{content.sectionTag}</div>
+      <h2 class="section-title">{content.titlePrefix} <span class="accent">{content.titleAccent}</span></h2>
       <div class="project-switch" role="tablist" aria-label="Filter projects by language">
         <button class="switch-btn is-active" type="button" role="tab" aria-selected="true" aria-controls="projects-go" data-target="go">
           Go

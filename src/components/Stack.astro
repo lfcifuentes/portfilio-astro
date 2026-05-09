@@ -1,4 +1,19 @@
 ---
+interface Props {
+  content?: {
+    sectionTag: string;
+    titlePrefix: string;
+    titleAccent: string;
+  };
+}
+
+const {
+  content = {
+    sectionTag: 'Technology',
+    titlePrefix: 'My',
+    titleAccent: 'stack.',
+  },
+} = Astro.props as Props;
 ---
 
 <style>
@@ -126,8 +141,8 @@
 <section id="stack">
   <div class="container">
     <div class="section-head">
-      <div class="section-tag">Technology</div>
-      <h2 class="section-title">My <span class="accent">stack.</span></h2>
+      <div class="section-tag">{content.sectionTag}</div>
+      <h2 class="section-title">{content.titlePrefix} <span class="accent">{content.titleAccent}</span></h2>
     </div>
     <div class="stack-grid">
       <div class="stack-card">

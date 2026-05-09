@@ -196,6 +196,49 @@
     margin-bottom: 48px;
   }
 
+  .project-switch {
+    margin-top: 20px;
+    display: inline-flex;
+    gap: 8px;
+    padding: 6px;
+    border-radius: 10px;
+    background: var(--bg2);
+    border: 1px solid var(--border2);
+  }
+
+  .switch-btn {
+    border: 1px solid transparent;
+    background: transparent;
+    color: var(--muted);
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 11px;
+    letter-spacing: 0.8px;
+    text-transform: uppercase;
+    padding: 8px 12px;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: all 0.2s ease;
+  }
+
+  .switch-btn:hover {
+    color: var(--text);
+    border-color: var(--border2);
+  }
+
+  .switch-btn.is-active {
+    color: var(--blue);
+    border-color: rgba(52, 131, 250, 0.35);
+    background: var(--blue-dim);
+  }
+
+  .project-panel {
+    display: none;
+  }
+
+  .project-panel.is-active {
+    display: block;
+  }
+
   .section-tag {
     font-family: 'IBM Plex Mono', monospace;
     font-size: 11px;
@@ -313,119 +356,211 @@
     <div class="section-head">
       <div class="section-tag">Featured work</div>
       <h2 class="section-title">Professional <span class="accent">projects.</span></h2>
+      <div class="project-switch" role="tablist" aria-label="Filter projects by language">
+        <button class="switch-btn is-active" type="button" role="tab" aria-selected="true" aria-controls="projects-go" data-target="go">
+          Go
+        </button>
+        <button class="switch-btn" type="button" role="tab" aria-selected="false" aria-controls="projects-python" data-target="python">
+          Python
+        </button>
+      </div>
     </div>
-    <div class="projects-grid">
-      <!-- Auth Manager — featured -->
-      <div class="project-card featured">
-        <div>
-          <span class="project-tag">Production · Full Ownership</span>
-          <div class="project-name">Auth Manager</div>
+    <div id="projects-go" class="project-panel is-active" role="tabpanel" aria-label="Go projects">
+      <div class="projects-grid">
+        <!-- Auth Manager -->
+        <div class="project-card featured">
+          <div>
+            <span class="project-tag">Production · Full Ownership</span>
+            <div class="project-name">Auth Manager</div>
+            <p class="project-desc">
+              Took full ownership after identifying critical design flaws in the previous version.
+              Rebuilt from scratch working directly with the client — defining architecture,
+              versioned REST contracts and data model. Zero authentication incidents post-launch.
+            </p>
+            <div class="project-metrics">
+              <div class="metric">
+                <div class="val">70K+</div>
+                <div class="lbl">Users</div>
+              </div>
+              <div class="metric">
+                <div class="val">5</div>
+                <div class="lbl">Platforms</div>
+              </div>
+              <div class="metric">
+                <div class="val">0</div>
+                <div class="lbl">Incidents</div>
+              </div>
+            </div>
+            <div class="project-stack">
+              <span>Go</span><span>Redis</span><span>SQL Server</span><span>DDD</span><span>Docker</span><span>CI/CD</span>
+            </div>
+          </div>
+          <div class="arch-diagram">
+            <div class="arch-row">
+              <div class="arch-node hi">API Gateway</div>
+            </div>
+            <div class="arch-arr-d">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <line x1="12" y1="5" x2="12" y2="19"></line>
+                <polyline points="19 12 12 19 5 12"></polyline>
+              </svg>
+            </div>
+            <div class="arch-row">
+              <div class="arch-node hi">Auth Service</div>
+              <span class="arch-arr">→</span>
+              <div class="arch-node">User Service</div>
+            </div>
+            <div class="arch-arr-d">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <line x1="12" y1="5" x2="12" y2="19"></line>
+                <polyline points="19 12 12 19 5 12"></polyline>
+              </svg>
+            </div>
+            <div class="arch-row">
+              <div class="arch-node green">Queue · Workers</div>
+            </div>
+            <div class="arch-arr-d">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <line x1="12" y1="5" x2="12" y2="19"></line>
+                <polyline points="19 12 12 19 5 12"></polyline>
+              </svg>
+            </div>
+            <div class="arch-row">
+              <div class="arch-node">SQL Server</div>
+              <span class="arch-arr">·</span>
+              <div class="arch-node green">Redis</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Centralized Admin Platform -->
+        <div class="project-card">
+          <span class="project-tag green-tag">Admin Platform · Private Client</span>
+          <div class="project-name">Centralized Admin Platform</div>
           <p class="project-desc">
-            Took full ownership after identifying critical design flaws in the previous version.
-            Rebuilt from scratch working directly with the client — defining architecture,
-            versioned REST contracts and data model. Zero authentication incidents post-launch.
+            Unified scattered admin modules into a single panel, defining the internal standard
+            for admin module development. Automated flat-file record loading, eliminating hours of manual work per cycle.
           </p>
           <div class="project-metrics">
             <div class="metric">
-              <div class="val">70K+</div>
-              <div class="lbl">Users</div>
+              <div class="val">28K</div>
+              <div class="lbl">Maintenance</div>
             </div>
             <div class="metric">
-              <div class="val">5</div>
-              <div class="lbl">Platforms</div>
-            </div>
-            <div class="metric">
-              <div class="val">0</div>
-              <div class="lbl">Incidents</div>
+              <div class="val">34K</div>
+              <div class="lbl">Investigations</div>
             </div>
           </div>
           <div class="project-stack">
-            <span>Go</span><span>Redis</span><span>SQL Server</span><span>DDD</span><span>Docker</span><span>CI/CD</span>
+            <span>Go</span><span>Redis</span><span>SQL Server</span><span>Docker</span>
           </div>
         </div>
-        <div class="arch-diagram">
-          <div class="arch-row">
-            <div class="arch-node hi">API Gateway</div>
+
+        <!-- NomadOS -->
+        <div class="project-card">
+          <span class="project-tag">SaaS · Online Learning</span>
+          <div class="project-name">NomadOS</div>
+          <p class="project-desc">
+            Online learning and workflow automation platform. Cloud integrations on AWS with end-to-end
+            continuous deployment. Active user base with paying memberships.
+          </p>
+          <div class="project-metrics">
+            <div class="metric">
+              <div class="val">8K</div>
+              <div class="lbl">Users</div>
+            </div>
+            <div class="metric">
+              <div class="val">~2K</div>
+              <div class="lbl">Memberships</div>
+            </div>
           </div>
-          <div class="arch-arr-d">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-              <line x1="12" y1="5" x2="12" y2="19"></line>
-              <polyline points="19 12 12 19 5 12"></polyline>
-            </svg>
-          </div>
-          <div class="arch-row">
-            <div class="arch-node hi">Auth Service</div>
-            <span class="arch-arr">→</span>
-            <div class="arch-node">User Service</div>
-          </div>
-          <div class="arch-arr-d">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-              <line x1="12" y1="5" x2="12" y2="19"></line>
-              <polyline points="19 12 12 19 5 12"></polyline>
-            </svg>
-          </div>
-          <div class="arch-row">
-            <div class="arch-node green">Queue · Workers</div>
-          </div>
-          <div class="arch-arr-d">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-              <line x1="12" y1="5" x2="12" y2="19"></line>
-              <polyline points="19 12 12 19 5 12"></polyline>
-            </svg>
-          </div>
-          <div class="arch-row">
-            <div class="arch-node">SQL Server</div>
-            <span class="arch-arr">·</span>
-            <div class="arch-node green">Redis</div>
+          <div class="project-stack">
+            <span>Go</span><span>Laravel</span><span>Node.js</span><span>AWS</span><span>PostgreSQL</span><span>GitLab CI/CD</span>
           </div>
         </div>
       </div>
+    </div>
 
-      <!-- Luxio -->
-      <div class="project-card">
-        <span class="project-tag green-tag">Admin Platform · Private Client</span>
-        <div class="project-name">Centralized Admin Platform</div>
-        <p class="project-desc">
-          Unified scattered admin modules into a single panel, defining the internal standard
-          for admin module development. Automated flat-file record loading, eliminating hours of manual work per cycle.
-        </p>
-        <div class="project-metrics">
-          <div class="metric">
-            <div class="val">28K</div>
-            <div class="lbl">Maintenance</div>
+    <div id="projects-python" class="project-panel" role="tabpanel" aria-label="Python projects">
+      <div class="projects-grid">
+        <div class="project-card">
+          <span class="project-tag">Automation · AI Operations</span>
+          <div class="project-name">X-Grow AI Orchestration API</div>
+          <p class="project-desc">
+            Built Python services for AI-driven automation flows, exposing internal APIs for chatbot orchestration,
+            validation and downstream integrations with queue-driven workloads.
+          </p>
+          <div class="project-metrics">
+            <div class="metric">
+              <div class="val">24/7</div>
+              <div class="lbl">Runtime</div>
+            </div>
+            <div class="metric">
+              <div class="val">Low</div>
+              <div class="lbl">Latency</div>
+            </div>
           </div>
-          <div class="metric">
-            <div class="val">34K</div>
-            <div class="lbl">Investigations</div>
+          <div class="project-stack">
+            <span>Python</span><span>FastAPI</span><span>Workers</span><span>REST</span><span>N8N</span>
           </div>
         </div>
-        <div class="project-stack">
-          <span>Go</span><span>Redis</span><span>SQL Server</span><span>Docker</span>
-        </div>
-      </div>
 
-      <!-- NomadOS -->
-      <div class="project-card">
-        <span class="project-tag">SaaS · Online Learning</span>
-        <div class="project-name">NomadOS</div>
-        <p class="project-desc">
-          Online learning and workflow automation platform. Cloud integrations on AWS with end-to-end
-          continuous deployment. Active user base with paying memberships.
-        </p>
-        <div class="project-metrics">
-          <div class="metric">
-            <div class="val">8K</div>
-            <div class="lbl">Users</div>
+        <div class="project-card">
+          <span class="project-tag green-tag">Process Automation</span>
+          <div class="project-name">Prepaid Medicine API 2024</div>
+          <p class="project-desc">
+            Built the complete backend from scratch for a prepaid healthcare client: data model design with
+            DDD architecture, database migrations, and REST APIs for memberships, policy holders, and beneficiaries.
+            Established the project technical foundation with Clean Architecture and FastAPI + Pydantic for strict
+            contract validation, ensuring scalability from day one.
+          </p>
+          <div class="project-metrics">
+            <div class="metric">
+              <div class="val">2024</div>
+              <div class="lbl">Delivery</div>
+            </div>
+            <div class="metric">
+              <div class="val">DDD</div>
+              <div class="lbl">Architecture</div>
+            </div>
           </div>
-          <div class="metric">
-            <div class="val">~2K</div>
-            <div class="lbl">Memberships</div>
+          <div class="project-stack">
+            <span>Python</span><span>FastAPI</span><span>SQLAlchemy</span><span>Alembic</span><span>PostgreSQL</span><span>DDD</span><span>Docker</span>
           </div>
-        </div>
-        <div class="project-stack">
-          <span>Go</span><span>Laravel</span><span>Node.js</span><span>AWS</span><span>PostgreSQL</span><span>GitLab CI/CD</span>
         </div>
       </div>
     </div>
   </div>
 </section>
+
+<script is:inline>
+  const section = document.querySelector('#projects');
+
+  if (section) {
+    const buttons = Array.from(section.querySelectorAll('.switch-btn'));
+    const panels = {
+      go: section.querySelector('#projects-go'),
+      python: section.querySelector('#projects-python'),
+    };
+
+    const setActive = (target) => {
+      buttons.forEach((button) => {
+        const isActive = button.dataset.target === target;
+        button.classList.toggle('is-active', isActive);
+        button.setAttribute('aria-selected', String(isActive));
+      });
+
+      Object.entries(panels).forEach(([key, panel]) => {
+        if (!panel) return;
+        panel.classList.toggle('is-active', key === target);
+      });
+    };
+
+    buttons.forEach((button) => {
+      button.addEventListener('click', () => {
+        const target = button.dataset.target;
+        if (target) setActive(target);
+      });
+    });
+  }
+</script>

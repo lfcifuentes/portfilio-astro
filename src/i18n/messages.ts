@@ -80,6 +80,14 @@ export interface SiteMessages {
       bullets: string[];
     }>;
   };
+  contactSection: {
+    sectionTag: string;
+    titlePrefix: string;
+    titleAccent: string;
+    subtitle: string;
+    linkedInLabel: string;
+    githubLabel: string;
+  };
   footer: {
     copyright: string;
     builtWithPrefix: string;
@@ -197,6 +205,15 @@ export const messages: Record<Locale, SiteMessages> = {
         },
       ],
     },
+    contactSection: {
+      sectionTag: 'Contact',
+      titlePrefix: "Let's",
+      titleAccent: 'talk.',
+      subtitle:
+        'Open to Senior Backend Engineer and Tech Lead roles — remote or Colombia. Especially interested in high-scale, distributed systems challenges.',
+      linkedInLabel: 'LinkedIn',
+      githubLabel: 'GitHub',
+    },
     footer: {
       copyright: '© 2026 Luis Fernando Cifuentes',
       builtWithPrefix: 'Built with',
@@ -311,6 +328,15 @@ export const messages: Record<Locale, SiteMessages> = {
           ],
         },
       ],
+    },
+    contactSection: {
+      sectionTag: 'Contacto',
+      titlePrefix: 'Hablemos',
+      titleAccent: '.',
+      subtitle:
+        'Abierto a oportunidades como Senior Backend Engineer y Tech Lead, remoto o en Colombia. Especial interés en retos de sistemas distribuidos y plataformas de alto tráfico.',
+      linkedInLabel: 'LinkedIn',
+      githubLabel: 'GitHub',
     },
     footer: {
       copyright: '© 2026 Luis Fernando Cifuentes',

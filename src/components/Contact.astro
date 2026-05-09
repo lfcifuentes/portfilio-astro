@@ -1,5 +1,28 @@
 ---
 import { Icon } from "astro-icon/components";
+
+interface Props {
+  content?: {
+    sectionTag: string;
+    titlePrefix: string;
+    titleAccent: string;
+    subtitle: string;
+    linkedInLabel: string;
+    githubLabel: string;
+  };
+}
+
+const {
+  content = {
+    sectionTag: 'Contact',
+    titlePrefix: "Let's",
+    titleAccent: 'talk.',
+    subtitle:
+      'Open to Senior Backend Engineer and Tech Lead roles — remote or Colombia. Especially interested in high-scale, distributed systems challenges.',
+    linkedInLabel: 'LinkedIn',
+    githubLabel: 'GitHub',
+  },
+} = Astro.props as Props;
 ---
 
 <style>
@@ -144,11 +167,10 @@ import { Icon } from "astro-icon/components";
 <section id="contact">
   <div class="container">
     <div class="contact-inner">
-      <div class="section-tag">Contact</div>
-      <div class="contact-title">Let's <span style="color:var(--blue)">talk.</span></div>
+      <div class="section-tag">{content.sectionTag}</div>
+      <div class="contact-title">{content.titlePrefix} <span style="color:var(--blue)">{content.titleAccent}</span></div>
       <p class="contact-sub">
-        Open to Senior Backend Engineer and Tech Lead roles — remote or Colombia.
-        Especially interested in high-scale, distributed systems challenges.
+        {content.subtitle}
       </p>
       <div class="contact-links">
         <a href="mailto:luis@lcifuentes.dev" class="contact-link primary">
@@ -157,11 +179,11 @@ import { Icon } from "astro-icon/components";
         </a>
         <a href="https://www.linkedin.com/in/luis-fernando-cifuentes-3a6a90119/" target="_blank" class="contact-link secondary">
           <Icon name="simple-icons:linkedin" size={20} />
-          LinkedIn
+          {content.linkedInLabel}
         </a>
         <a href="https://github.com/lfcifuentes" target="_blank" class="contact-link secondary">
           <Icon name="simple-icons:github" size={20} />
-          GitHub
+          {content.githubLabel}
         </a>
       </div>
     </div>

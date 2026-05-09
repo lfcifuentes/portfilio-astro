@@ -1,4 +1,59 @@
 ---
+interface ExperienceItem {
+  role: string;
+  company: string;
+  date: string;
+  bullets: string[];
+}
+
+interface Props {
+  content?: {
+    sectionTag: string;
+    title: string;
+    titleAccent: string;
+    items: ExperienceItem[];
+  };
+}
+
+const {
+  content = {
+    sectionTag: 'Career',
+    title: 'Experience',
+    titleAccent: '.',
+    items: [
+      {
+        role: 'Tech Lead — X-Grow AI',
+        company: 'WACO Services · Remote',
+        date: 'Oct 2025 — Present',
+        bullets: [
+          'Defined Go backend architecture exposing REST APIs and MCP servers consumed by LLM agents and automation flows (N8N).',
+          'Designed async chatbot interaction processing to sustain traffic spikes without latency degradation using workers and queues.',
+          'Established observability standards (structured logs, metrics, alerts) and team onboarding documentation.',
+        ],
+      },
+      {
+        role: 'Senior Backend Engineer',
+        company: 'WACO Services · Remote',
+        date: 'Aug 2020 — Present',
+        bullets: [
+          'Designed and implemented microservices in Go and Node.js for internal and third-party integrations, prioritizing concurrency, high availability and low latency.',
+          'Built a prepaid healthcare backend from scratch using Python, FastAPI, SQLAlchemy and Alembic under DDD and Clean Architecture principles, delivering strict API contracts for memberships, policy holders and beneficiaries.',
+          'Built CI/CD pipelines on AWS and Azure with GitLab, significantly reducing deployment time and eliminating recurring manual errors.',
+          'Led architecture decisions, standardized integration templates and mentored the team in Go and FastAPI, improving response times by 80%.',
+        ],
+      },
+      {
+        role: 'Software Developer',
+        company: 'Oktal Desarrollos Tecnológicos · Cali, Colombia',
+        date: 'Sep 2016 — Aug 2020',
+        bullets: [
+          'Took full ownership of a legacy PHP 5.3 to 7.0 migration end-to-end, improving response times by 90% and eliminating tech debt blocking new features.',
+          'Designed PHP/Laravel web services integrated with external APIs, optimizing critical queries and processes.',
+        ],
+      },
+    ],
+  },
+} = Astro.props as Props;
 ---
 
 <style>
@@ -71,8 +126,8 @@
     top: 7px;
   }
 
-  .exp-bullets li strong {
-    color: var(--text);
+  .exp-bullets :global(strong) {
+    color: #ffffff;
   }
 
   .exp-date {
@@ -196,48 +251,24 @@
 <section id="experience">
   <div class="container">
     <div class="section-head">
-      <div class="section-tag">Career</div>
-      <h2 class="section-title">Experience<span class="accent">.</span></h2>
+      <div class="section-tag">{content.sectionTag}</div>
+      <h2 class="section-title">{content.title}<span class="accent">{content.titleAccent}</span></h2>
     </div>
     <div class="exp-list">
-      <div class="exp-card">
-        <div>
-          <div class="exp-role">Tech Lead — X-Grow AI</div>
-          <div class="exp-company">WACO Services · Remote</div>
-          <ul class="exp-bullets">
-            <li>Defined Go backend architecture exposing REST APIs and MCP servers consumed by LLM agents and automation flows (N8N).</li>
-            <li>Designed async chatbot interaction processing to sustain traffic spikes without latency degradation using workers and queues.</li>
-            <li>Established observability standards (structured logs, metrics, alerts) and team onboarding documentation.</li>
-          </ul>
+      {content.items.map((item) => (
+        <div class="exp-card">
+          <div>
+            <div class="exp-role">{item.role}</div>
+            <div class="exp-company">{item.company}</div>
+            <ul class="exp-bullets">
+              {item.bullets.map((bullet) => (
+                <li set:html={bullet}></li>
+              ))}
+            </ul>
+          </div>
+          <div class="exp-date">{item.date}</div>
         </div>
-        <div class="exp-date">Oct 2025 — Present</div>
-      </div>
-
-      <div class="exp-card">
-        <div>
-          <div class="exp-role">Senior Backend Engineer</div>
-          <div class="exp-company">WACO Services · Remote</div>
-          <ul class="exp-bullets">
-            <li>Designed and implemented microservices in Go and Node.js for internal and third-party integrations, prioritizing concurrency, high availability and low latency.</li>
-            <li>Built a prepaid healthcare backend from scratch using Python, FastAPI, SQLAlchemy and Alembic under DDD and Clean Architecture principles, delivering strict API contracts for memberships, policy holders and beneficiaries.</li>
-            <li>Built CI/CD pipelines on AWS and Azure with GitLab, <strong>significantly reducing deployment time</strong> and eliminating recurring manual errors.</li>
-            <li>Led architecture decisions, standardized integration templates and mentored the team in Go and FastAPI, <strong>improving response times by 80%</strong>.</li>
-          </ul>
-        </div>
-        <div class="exp-date">Aug 2020 — Present</div>
-      </div>
-
-      <div class="exp-card">
-        <div>
-          <div class="exp-role">Software Developer</div>
-          <div class="exp-company">Oktal Desarrollos Tecnológicos · Cali, Colombia</div>
-          <ul class="exp-bullets">
-            <li>Took full ownership of a legacy PHP 5.3 → 7.0 migration end-to-end, <strong>improving response times by 90%</strong> and eliminating tech debt blocking new features.</li>
-            <li>Designed PHP/Laravel web services integrated with external APIs, optimizing critical queries and processes.</li>
-          </ul>
-        </div>
-        <div class="exp-date">Sep 2016 — Aug 2020</div>
-      </div>
+      ))}
     </div>
   </div>
 </section>

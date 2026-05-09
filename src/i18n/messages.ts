@@ -69,6 +69,17 @@ export interface SiteMessages {
     titleAccent: string;
     subtitle: string;
   };
+  experienceSection: {
+    sectionTag: string;
+    title: string;
+    titleAccent: string;
+    items: Array<{
+      role: string;
+      company: string;
+      date: string;
+      bullets: string[];
+    }>;
+  };
 }
 
 export const messages: Record<Locale, SiteMessages> = {
@@ -143,6 +154,43 @@ export const messages: Record<Locale, SiteMessages> = {
       titleAccent: 'projects.',
       subtitle: 'Front-end experiments, tools, and side projects built on my own time.',
     },
+    experienceSection: {
+      sectionTag: 'Career',
+      title: 'Experience',
+      titleAccent: '.',
+      items: [
+        {
+          role: 'Tech Lead — X-Grow AI',
+          company: 'WACO Services · Remote',
+          date: 'Oct 2025 — Present',
+          bullets: [
+            'Defined Go backend architecture exposing REST APIs and MCP servers consumed by LLM agents and automation flows (N8N).',
+            'Designed async chatbot interaction processing to sustain traffic spikes without latency degradation using workers and queues.',
+            'Established observability standards (structured logs, metrics, alerts) and team onboarding documentation.',
+          ],
+        },
+        {
+          role: 'Senior Backend Engineer',
+          company: 'WACO Services · Remote',
+          date: 'Aug 2020 — Present',
+          bullets: [
+            'Designed and implemented microservices in Go and Node.js for internal and third-party integrations, prioritizing concurrency, high availability and low latency.',
+            'Built a prepaid healthcare backend from scratch using Python, FastAPI, SQLAlchemy and Alembic under DDD and Clean Architecture principles, delivering strict API contracts for memberships, policy holders and beneficiaries.',
+            'Built CI/CD pipelines on AWS and Azure with GitLab, <strong>significantly reducing deployment time</strong> and eliminating recurring manual errors.',
+            'Led architecture decisions, standardized integration templates and mentored the team in Go and FastAPI, <strong>improving response times by 80%</strong>.',
+          ],
+        },
+        {
+          role: 'Software Developer',
+          company: 'Oktal Desarrollos Tecnológicos · Cali, Colombia',
+          date: 'Sep 2016 — Aug 2020',
+          bullets: [
+            'Took full ownership of a legacy PHP 5.3 to 7.0 migration end-to-end, <strong>improving response times by 90%</strong> and eliminating tech debt blocking new features.',
+            'Designed PHP/Laravel web services integrated with external APIs, optimizing critical queries and processes.',
+          ],
+        },
+      ],
+    },
   },
   es: {
     meta: {
@@ -214,6 +262,43 @@ export const messages: Record<Locale, SiteMessages> = {
       titlePrefix: 'Proyectos',
       titleAccent: 'personales.',
       subtitle: 'Experimentos de front-end, herramientas y side projects construidos en mi tiempo personal.',
+    },
+    experienceSection: {
+      sectionTag: 'Trayectoria',
+      title: 'Experiencia',
+      titleAccent: '.',
+      items: [
+        {
+          role: 'Tech Lead — X-Grow AI',
+          company: 'WACO Services · Remoto',
+          date: 'Oct 2025 — Presente',
+          bullets: [
+            'Definí la arquitectura backend en Go, exponiendo APIs REST y servidores MCP consumidos por agentes LLM y flujos de automatización (N8N).',
+            'Diseñé el procesamiento asíncrono de interacciones de chatbot para sostener picos de tráfico sin degradación de latencia usando workers y colas.',
+            'Establecí estándares de observabilidad (logs estructurados, métricas, alertas) y documentación técnica de onboarding para el equipo.',
+          ],
+        },
+        {
+          role: 'Senior Backend Engineer',
+          company: 'WACO Services · Remoto',
+          date: 'Ago 2020 — Presente',
+          bullets: [
+            'Diseñé e implementé microservicios en Go y Node.js para integraciones internas y de terceros, priorizando concurrencia, alta disponibilidad y baja latencia.',
+            'Construí desde cero un backend de medicina prepagada con Python, FastAPI, SQLAlchemy y Alembic bajo principios de DDD y Clean Architecture, entregando contratos de API estrictos para membresías, titulares y beneficiarios.',
+            'Implementé pipelines de CI/CD en AWS y Azure con GitLab, <strong>reduciendo significativamente el tiempo de despliegue</strong> y eliminando errores manuales recurrentes.',
+            'Lideré decisiones de arquitectura, estandaricé plantillas de integración y mentoreé al equipo en Go y FastAPI, <strong>mejorando los tiempos de respuesta en un 80%</strong>.',
+          ],
+        },
+        {
+          role: 'Software Developer',
+          company: 'Oktal Desarrollos Tecnológicos · Cali, Colombia',
+          date: 'Sep 2016 — Ago 2020',
+          bullets: [
+            'Asumí ownership completo de una migración legacy de PHP 5.3 a 7.0 de extremo a extremo, <strong>mejorando los tiempos de respuesta en un 90%</strong> y eliminando deuda técnica que bloqueaba nuevas funcionalidades.',
+            'Diseñé servicios web en PHP/Laravel integrados con APIs externas, optimizando consultas y procesos críticos.',
+          ],
+        },
+      ],
     },
   },
 };

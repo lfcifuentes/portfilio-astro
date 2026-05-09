@@ -7,6 +7,8 @@ interface Props {
   canonicalURL?: string;
   ogImage?: string;
   noindex?: boolean;
+  lang?: string;
+  ogLocale?: string;
 }
 
 const {
@@ -15,11 +17,14 @@ const {
   canonicalURL,
   ogImage = '/favicon.svg',
   noindex = false,
+  lang = 'en',
+  ogLocale,
 } = Astro.props;
 
 const siteURL = Astro.site ?? new URL(Astro.url.origin);
 const finalCanonicalURL = canonicalURL ?? new URL(Astro.url.pathname, siteURL).toString();
 const finalOgImageURL = new URL(ogImage, siteURL).toString();
+const finalOgLocale = ogLocale ?? (lang === 'es' ? 'es_ES' : 'en_US');
 
 const personSchema = {
   '@context': 'https://schema.org',
@@ -32,7 +37,7 @@ const personSchema = {
 ---
 
 <!DOCTYPE html>
-<html lang="en">
+<html lang={lang}>
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -51,7 +56,7 @@ const personSchema = {
     <meta property="og:description" content={description} />
     <meta property="og:url" content={finalCanonicalURL} />
     <meta property="og:image" content={finalOgImageURL} />
-    <meta property="og:locale" content="en_US" />
+    <meta property="og:locale" content={finalOgLocale} />
     <meta name="twitter:card" content="summary_large_image" />
     <meta name="twitter:title" content={`${title} | Luis Fernando Cifuentes`} />
     <meta name="twitter:description" content={description} />

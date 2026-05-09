@@ -1,4 +1,44 @@
 ---
+interface Props {
+  content?: {
+    eyebrow: string;
+    role: string;
+    description: string;
+    viewProjects: string;
+    linkedIn: string;
+    termFile: string;
+    termLoading: string;
+    termStack: string;
+    termStatus: string;
+    termExp: string;
+    termLang: string;
+    termArch: string;
+    statUsers: string;
+    statLatency: string;
+    statRecords: string;
+  };
+}
+
+const {
+  content = {
+    eyebrow: 'Available for Senior / Lead roles',
+    role: 'Senior Backend Engineer · Go · Distributed Systems',
+    description:
+      'Building high-performance distributed systems with +8 years of experience. Full ownership from architecture to production, including rebuilding critical systems from scratch while working directly with clients.',
+    viewProjects: 'View projects',
+    linkedIn: 'LinkedIn →',
+    termFile: '~ engineer.go',
+    termLoading: 'distributed systems',
+    termStack: 'Go · K8s · Redis · AWS',
+    termStatus: '● production ready',
+    termExp: '+8 years',
+    termLang: 'Go (primary)',
+    termArch: 'event-driven · microservices',
+    statUsers: 'users served',
+    statLatency: 'latency drop',
+    statRecords: 'records managed',
+  },
+} = Astro.props as Props;
 ---
 
 <style>
@@ -391,21 +431,19 @@
   <div class="container">
     <div class="hero-inner">
       <div class="hero-left">
-        <div class="hero-eyebrow">Available for Senior / Lead roles</div>
+        <div class="hero-eyebrow">{content.eyebrow}</div>
         <h1 class="hero-name">
           Luis<br />
           Fernando<br />
           <span class="accent">Cifuentes.</span>
         </h1>
-        <div class="hero-role">Senior Backend Engineer · Go · Distributed Systems</div>
+        <div class="hero-role">{content.role}</div>
         <p class="hero-desc">
-          Building <strong>high-performance distributed systems</strong> with +8 years of experience.
-          Full ownership from architecture to production —
-          including <em>rebuilding critical systems from scratch</em> working directly with clients.
+          {content.description}
         </p>
         <div class="hero-actions">
-          <a href="#projects" class="btn-primary">View projects</a>
-          <a href="https://www.linkedin.com/in/luis-fernando-cifuentes-3a6a90119/" target="_blank" class="btn-outline">LinkedIn →</a>
+          <a href="#projects" class="btn-primary">{content.viewProjects}</a>
+          <a href="https://www.linkedin.com/in/luis-fernando-cifuentes-3a6a90119/" target="_blank" class="btn-outline">{content.linkedIn}</a>
         </div>
       </div>
 
@@ -416,44 +454,44 @@
             <div class="dot dot-y"></div>
             <div class="dot dot-g"></div>
           </div>
-          <span class="term-title">~ engineer.go</span>
+          <span class="term-title">{content.termFile}</span>
         </div>
         <div class="term-body">
           <div class="t-line">
             <span class="t-p">$</span><span class="t-c">go run engineer.go</span><span class="cursor"></span>
           </div>
           <div class="t-line">
-            <span class="t-o">&gt; loading: <span class="t-v">distributed systems</span></span>
+            <span class="t-o">&gt; loading: <span class="t-v">{content.termLoading}</span></span>
           </div>
           <div class="t-line">
-            <span class="t-o">&gt; stack:   <span class="t-v">Go · K8s · Redis · AWS</span></span>
+            <span class="t-o">&gt; stack:   <span class="t-v">{content.termStack}</span></span>
           </div>
           <div class="t-line">
-            <span class="t-o">&gt; status:  <span class="t-ok">● production ready</span></span>
+            <span class="t-o">&gt; status:  <span class="t-ok">{content.termStatus}</span></span>
           </div>
           <div class="t-line">
-            <span class="t-o">&gt; exp:     <span class="t-num">+8 years</span></span>
+            <span class="t-o">&gt; exp:     <span class="t-num">{content.termExp}</span></span>
           </div>
           <div class="t-line">
-            <span class="t-o">&gt; lang:    <span class="t-v">Go (primary)</span></span>
+            <span class="t-o">&gt; lang:    <span class="t-v">{content.termLang}</span></span>
           </div>
           <div class="t-line">
-            <span class="t-o">&gt; arch:    <span class="t-v">event-driven · microservices</span></span>
+            <span class="t-o">&gt; arch:    <span class="t-v">{content.termArch}</span></span>
           </div>
         </div>
 
         <div class="stats-row">
           <div class="stat-item">
             <div class="stat-num">70K+</div>
-            <div class="stat-label">users served</div>
+            <div class="stat-label">{content.statUsers}</div>
           </div>
           <div class="stat-item">
             <div class="stat-num">80%</div>
-            <div class="stat-label">latency drop</div>
+            <div class="stat-label">{content.statLatency}</div>
           </div>
           <div class="stat-item">
             <div class="stat-num">62K+</div>
-            <div class="stat-label">records managed</div>
+            <div class="stat-label">{content.statRecords}</div>
           </div>
         </div>
       </div>

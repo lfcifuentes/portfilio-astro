@@ -1,5 +1,36 @@
 ---
 import Logo from './Logo.astro';
+
+interface Props {
+  lang?: string;
+  labels?: {
+    about: string;
+    stack: string;
+    projects: string;
+    personal: string;
+    experience: string;
+    contact: string;
+    contactCta: string;
+    languageSwitchLabel: string;
+  };
+}
+
+const {
+  lang = 'en',
+  labels = {
+    about: 'About',
+    stack: 'Stack',
+    projects: 'Projects',
+    personal: 'Personal',
+    experience: 'Experience',
+    contact: 'Contact',
+    contactCta: 'contact →',
+    languageSwitchLabel: 'Ver versión en español',
+  },
+} = Astro.props as Props;
+
+const switchHref = lang === 'es' ? '/en' : '/es';
+const switchText = lang === 'es' ? 'EN' : 'ES';
 ---
 
 <style>
@@ -77,6 +108,29 @@ import Logo from './Logo.astro';
     text-decoration: none;
     letter-spacing: 1px;
     transition: all 0.2s;
+  }
+
+  .nav-right {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+  }
+
+  .lang-switch {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 11px;
+    padding: 8px 10px;
+    border: 1px solid var(--border2);
+    border-radius: 4px;
+    color: var(--muted);
+    text-decoration: none;
+    letter-spacing: 1px;
+    transition: all 0.2s;
+  }
+
+  .lang-switch:hover {
+    border-color: var(--blue);
+    color: var(--text);
   }
 
   .nav-cta:hover {
@@ -180,7 +234,8 @@ import Logo from './Logo.astro';
       display: none;
     }
 
-    .nav-cta {
+    .nav-right .nav-cta,
+    .nav-right .lang-switch {
       display: none;
     }
 
@@ -196,14 +251,17 @@ import Logo from './Logo.astro';
   </a>
 
   <ul class="nav-links">
-    <li><a href="#about">About</a></li>
-    <li><a href="#stack">Stack</a></li>
-    <li><a href="#projects">Projects</a></li>
-    <li><a href="#personal-projects">Personal</a></li>
-    <li><a href="#experience">Experience</a></li>
+    <li><a href="#about">{labels.about}</a></li>
+    <li><a href="#stack">{labels.stack}</a></li>
+    <li><a href="#projects">{labels.projects}</a></li>
+    <li><a href="#personal-projects">{labels.personal}</a></li>
+    <li><a href="#experience">{labels.experience}</a></li>
   </ul>
 
-  <a href="mailto:luis@lcifuentes.dev" class="nav-cta">contact →</a>
+  <div class="nav-right">
+    <a href={switchHref} class="lang-switch" aria-label={labels.languageSwitchLabel}>{switchText}</a>
+    <a href="mailto:luis@lcifuentes.dev" class="nav-cta">{labels.contactCta}</a>
+  </div>
 
   <button
     class="nav-mobile-toggle"
@@ -216,14 +274,15 @@ import Logo from './Logo.astro';
 
   <div class="nav-mobile-panel" id="mobile-menu">
     <ul class="nav-mobile-links">
-      <li><a href="#about">About</a></li>
-      <li><a href="#stack">Stack</a></li>
-      <li><a href="#projects">Projects</a></li>
-      <li><a href="#personal-projects">Personal</a></li>
-      <li><a href="#experience">Experience</a></li>
-      <li><a href="#contact">Contact</a></li>
+      <li><a href="#about">{labels.about}</a></li>
+      <li><a href="#stack">{labels.stack}</a></li>
+      <li><a href="#projects">{labels.projects}</a></li>
+      <li><a href="#personal-projects">{labels.personal}</a></li>
+      <li><a href="#experience">{labels.experience}</a></li>
+      <li><a href="#contact">{labels.contact}</a></li>
+      <li><a href={switchHref}>{switchText}</a></li>
     </ul>
-    <a href="mailto:luis@lcifuentes.dev" class="nav-cta nav-mobile-contact">contact →</a>
+    <a href="mailto:luis@lcifuentes.dev" class="nav-cta nav-mobile-contact">{labels.contactCta}</a>
   </div>
 </nav>
 

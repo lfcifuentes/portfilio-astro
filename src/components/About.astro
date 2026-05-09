@@ -1,4 +1,35 @@
 ---
+interface Props {
+  content?: {
+    sectionTag: string;
+    titlePrefix: string;
+    titleAccent: string;
+    p1: string;
+    p2: string;
+    p3: string;
+    p4: string;
+    impact1: string;
+    impact2: string;
+    impact3: string;
+    impact4: string;
+  };
+}
+
+const {
+  content = {
+    sectionTag: 'About',
+    titlePrefix: 'Who I',
+    titleAccent: 'am.',
+    p1: 'Backend Engineer with +8 years building distributed systems and high-performance APIs in Go. I specialize in event-driven architectures, async processing with workers and queues, and production observability.',
+    p2: 'I take full ownership of problems from design to production. My track record includes rebuilding systems with critical design flaws, working directly with clients to arrive at the right solution. A key example: an authentication system rebuilt from scratch, now serving 70K+ users across 5 platforms with zero incidents post-launch.',
+    p3: 'I have built and technically led marketplace, fintech and SaaS platforms deployed on AWS and Azure over Kubernetes with CI/CD. I design solutions oriented around availability, latency and cost, and mentor teams to scale delivery without sacrificing quality.',
+    p4: 'I am a balanced and composed problem-solver, especially in high-pressure project situations. In leadership roles, I naturally act as a mediator and adapt quickly to changing constraints. I consistently mentor teammates and bring a meticulous, detail-oriented, and analytical mindset to architecture and delivery.',
+    impact1: 'Users served by Auth Manager, rebuilt from scratch with zero post-launch incidents',
+    impact2: 'Response time improvement after migrating services to Go + FastAPI',
+    impact3: 'Records managed in Luxio (28K maintenance + 34K investigations) with background notifications',
+    impact4: 'Registered users on NomadOS with ~2K active or historical memberships',
+  },
+} = Astro.props as Props;
 ---
 
 <style>
@@ -127,46 +158,32 @@
 <section id="about">
   <div class="container">
     <div class="section-head">
-      <div class="section-tag">About</div>
-      <h2 class="section-title">Who I <span class="accent">am.</span></h2>
+      <div class="section-tag">{content.sectionTag}</div>
+      <h2 class="section-title">{content.titlePrefix} <span class="accent">{content.titleAccent}</span></h2>
     </div>
     <div class="about-grid">
       <div class="about-text">
-        <p>
-          Backend Engineer with <strong>+8 years</strong> building distributed systems and high-performance APIs in <strong>Go</strong>.
-          I specialize in <em>event-driven architectures</em>, async processing with workers and queues, and production observability.
-        </p>
-        <p>
-          I take <strong>full ownership</strong> of problems — from design to production.
-          My track record includes rebuilding systems with critical design flaws, working directly with clients to arrive at the right solution.
-          A key example: an authentication system rebuilt from scratch, now serving <em>70K+ users across 5 platforms with zero incidents post-launch</em>.
-        </p>
-        <p>
-          I've built and technically led marketplace, fintech and SaaS platforms deployed on AWS and Azure over Kubernetes with CI/CD.
-          I design solutions oriented around availability, latency and cost — and mentor teams to scale delivery without sacrificing quality.
-        </p>
-        <p>
-          I am a balanced and composed problem-solver, especially in high-pressure project situations.
-          In leadership roles, I naturally act as a mediator and adapt quickly to changing constraints.
-          I consistently mentor teammates and bring a meticulous, detail-oriented, and analytical mindset to architecture and delivery.
-        </p>
+        <p>{content.p1}</p>
+        <p>{content.p2}</p>
+        <p>{content.p3}</p>
+        <p>{content.p4}</p>
       </div>
       <div class="impact-list">
         <div class="impact-item">
           <div class="num">70K+</div>
-          <div class="desc">Users served by Auth Manager — rebuilt from scratch with zero post-launch incidents</div>
+          <div class="desc">{content.impact1}</div>
         </div>
         <div class="impact-item">
           <div class="num">80%</div>
-          <div class="desc">Response time improvement after migrating services to Go + FastAPI</div>
+          <div class="desc">{content.impact2}</div>
         </div>
         <div class="impact-item">
           <div class="num">62K+</div>
-          <div class="desc">Records managed in Luxio (28K maintenance + 34K investigations) with background notifications</div>
+          <div class="desc">{content.impact3}</div>
         </div>
         <div class="impact-item">
           <div class="num">8K</div>
-          <div class="desc">Registered users on NomadOS with ~2K active or historical memberships</div>
+          <div class="desc">{content.impact4}</div>
         </div>
       </div>
     </div>

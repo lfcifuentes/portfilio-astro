@@ -1,0 +1,33 @@
+---
+import MainLayout from '../../layouts/MainLayout.astro';
+import Nav from '../../components/Nav.astro';
+import Hero from '../../components/Hero.astro';
+import About from '../../components/About.astro';
+import Stack from '../../components/Stack.astro';
+import Projects from '../../components/Projects.astro';
+import PersonalProjects from '../../components/PersonalProjects.astro';
+import Experience from '../../components/Experience.astro';
+import Contact from '../../components/Contact.astro';
+import Footer from '../../components/Footer.astro';
+import { getMessages } from '../../i18n/messages';
+
+const lang = 'en';
+const t = getMessages(lang);
+---
+
+<MainLayout
+  title={t.meta.title}
+  description={t.meta.description}
+  lang={lang}
+  ogLocale={t.meta.ogLocale}
+>
+  <Nav lang={lang} labels={t.nav} />
+  <Hero content={t.hero} />
+  <About content={t.about} />
+  <Stack />
+  <Projects />
+  <PersonalProjects />
+  <Experience />
+  <Contact />
+  <Footer />
+</MainLayout>

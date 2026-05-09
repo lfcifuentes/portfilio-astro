@@ -9,15 +9,21 @@ import PersonalProjects from '../components/PersonalProjects.astro';
 import Experience from '../components/Experience.astro';
 import Contact from '../components/Contact.astro';
 import Footer from '../components/Footer.astro';
+import { getMessages } from '../i18n/messages';
+
+const lang = 'en';
+const t = getMessages(lang);
 ---
 
 <MainLayout
-  title="Senior Backend Engineer Portfolio"
-  description="Senior Backend Engineer with expertise in software architecture, microservices, and scalable APIs. Explore my tech stack, projects, and professional experience."
+  title={t.meta.title}
+  description={t.meta.description}
+  lang={lang}
+  ogLocale={t.meta.ogLocale}
 >
-  <Nav />
-  <Hero />
-  <About />
+  <Nav lang={lang} labels={t.nav} />
+  <Hero content={t.hero} />
+  <About content={t.about} />
   <Stack />
   <Projects />
   <PersonalProjects />

@@ -22,6 +22,8 @@ export interface SiteMessages {
     description: string;
     viewProjects: string;
     linkedIn: string;
+    pythonCvCta: string;
+    goCvCta: string;
     termFile: string;
     termLoading: string;
     termStack: string;
@@ -51,9 +53,9 @@ export interface SiteMessages {
 export const messages: Record<Locale, SiteMessages> = {
   en: {
     meta: {
-      title: 'Senior Backend Engineer Portfolio',
+      title: 'Senior Backend Engineer Portfolio (Python & Go)',
       description:
-        'Senior Backend Engineer with expertise in software architecture, microservices, and scalable APIs. Explore my tech stack, projects, and professional experience.',
+        'Senior Backend Engineer specialized in Python and Go, with strong focus on FastAPI, distributed systems, and architecture-driven APIs.',
       ogLocale: 'en_US',
     },
     nav: {
@@ -68,17 +70,19 @@ export const messages: Record<Locale, SiteMessages> = {
     },
     hero: {
       eyebrow: 'Available for Senior / Lead roles',
-      role: 'Senior Backend Engineer · Go · Distributed Systems',
+      role: 'Senior Backend Engineer · Python & Go · Distributed Systems',
       description:
-        'Building high-performance distributed systems with +8 years of experience. Full ownership from architecture to production, including rebuilding critical systems from scratch while working directly with clients.',
+        'Building high-performance backend systems with +8 years of experience. Strong focus on Python/FastAPI and Go for architecture-driven APIs, with end-to-end ownership from design to production.',
       viewProjects: 'View projects',
       linkedIn: 'LinkedIn →',
+      pythonCvCta: 'Request Python CV',
+      goCvCta: 'Request Go CV',
       termFile: '~ engineer.go',
       termLoading: 'distributed systems',
       termStack: 'Go · K8s · Redis · AWS',
       termStatus: '● production ready',
       termExp: '+8 years',
-      termLang: 'Go (primary)',
+      termLang: 'Python + Go',
       termArch: 'event-driven · microservices',
       statUsers: 'users served',
       statLatency: 'latency drop',
@@ -100,9 +104,9 @@ export const messages: Record<Locale, SiteMessages> = {
   },
   es: {
     meta: {
-      title: 'Portafolio Senior Backend Engineer',
+      title: 'Portafolio Senior Backend Engineer (Python y Go)',
       description:
-        'Senior Backend Engineer con experiencia en arquitectura de software, microservicios y APIs escalables. Explora mi stack, proyectos y experiencia profesional.',
+        'Senior Backend Engineer especializado en Python y Go, con foco en FastAPI, sistemas distribuidos y APIs orientadas a arquitectura.',
       ogLocale: 'es_ES',
     },
     nav: {
@@ -117,17 +121,19 @@ export const messages: Record<Locale, SiteMessages> = {
     },
     hero: {
       eyebrow: 'Disponible para roles Senior / Lead',
-      role: 'Senior Backend Engineer · Go · Sistemas Distribuidos',
+      role: 'Senior Backend Engineer · Python y Go · Sistemas Distribuidos',
       description:
-        'Construyendo sistemas distribuidos de alto rendimiento con +8 años de experiencia. Ownership completo desde arquitectura hasta producción, incluyendo reconstrucción de sistemas críticos desde cero trabajando directamente con clientes.',
+        'Construyendo sistemas backend de alto rendimiento con +8 años de experiencia. Foco fuerte en Python/FastAPI y Go para APIs orientadas a arquitectura, con ownership completo desde diseño hasta producción.',
       viewProjects: 'Ver proyectos',
       linkedIn: 'LinkedIn →',
+      pythonCvCta: 'Solicitar CV Python',
+      goCvCta: 'Solicitar CV Go',
       termFile: '~ engineer.go',
       termLoading: 'sistemas distribuidos',
       termStack: 'Go · K8s · Redis · AWS',
       termStatus: '● listo para producción',
       termExp: '+8 años',
-      termLang: 'Go (principal)',
+      termLang: 'Python + Go',
       termArch: 'event-driven · microservicios',
       statUsers: 'usuarios servidos',
       statLatency: 'reducción latencia',

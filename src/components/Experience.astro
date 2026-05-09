@@ -56,8 +56,8 @@
     font-size: 14px;
     color: var(--muted);
     line-height: 1.6;
-    display: flex;
-    gap: 10px;
+    position: relative;
+    padding-left: 18px;
   }
 
   .exp-bullets li::before {
@@ -66,8 +66,9 @@
     height: 8px;
     background: var(--blue);
     border-radius: 50%;
-    margin-top: 7px;
-    flex-shrink: 0;
+    position: absolute;
+    left: 0;
+    top: 7px;
   }
 
   .exp-bullets li strong {
@@ -187,7 +188,7 @@
 
     .exp-bullets li {
       font-size: 12px;
-      gap: 8px;
+      padding-left: 16px;
     }
   }
 </style>

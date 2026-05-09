@@ -1,4 +1,21 @@
 ---
+interface Props {
+  content?: {
+    copyright: string;
+    builtWithPrefix: string;
+    highlightedWord: string;
+    builtWithSuffix: string;
+  };
+}
+
+const {
+  content = {
+    copyright: '© 2026 Luis Fernando Cifuentes',
+    builtWithPrefix: 'Built with',
+    highlightedWord: 'Go',
+    builtWithSuffix: 'mindset · Deployed with Astro',
+  },
+} = Astro.props as Props;
 ---
 
 <style>
@@ -39,6 +56,6 @@
 </style>
 
 <footer>
-  <div class="footer-left">© 2026 Luis Fernando Cifuentes</div>
-  <div class="footer-right">Built with <span>Go</span> mindset · Deployed with Astro</div>
+  <div class="footer-left">{content.copyright}</div>
+  <div class="footer-right">{content.builtWithPrefix} <span>{content.highlightedWord}</span> {content.builtWithSuffix}</div>
 </footer>

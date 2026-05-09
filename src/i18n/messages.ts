@@ -80,6 +80,12 @@ export interface SiteMessages {
       bullets: string[];
     }>;
   };
+  footer: {
+    copyright: string;
+    builtWithPrefix: string;
+    highlightedWord: string;
+    builtWithSuffix: string;
+  };
 }
 
 export const messages: Record<Locale, SiteMessages> = {
@@ -191,6 +197,12 @@ export const messages: Record<Locale, SiteMessages> = {
         },
       ],
     },
+    footer: {
+      copyright: '© 2026 Luis Fernando Cifuentes',
+      builtWithPrefix: 'Built with',
+      highlightedWord: 'Go',
+      builtWithSuffix: 'mindset · Deployed with Astro',
+    },
   },
   es: {
     meta: {
@@ -299,6 +311,12 @@ export const messages: Record<Locale, SiteMessages> = {
           ],
         },
       ],
+    },
+    footer: {
+      copyright: '© 2026 Luis Fernando Cifuentes',
+      builtWithPrefix: 'Construido con mentalidad',
+      highlightedWord: 'Go',
+      builtWithSuffix: '· Desplegado con Astro',
     },
   },
 };

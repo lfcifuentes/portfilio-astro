@@ -52,6 +52,11 @@ export interface SiteMessages {
     sectionTag: string;
     titlePrefix: string;
     titleAccent: string;
+    pythonBackendTitle: string;
+    architectureTitle: string;
+    polyglotBackendTitle: string;
+    cloudDevopsTitle: string;
+    dataObservabilityTitle: string;
   };
   projects: {
     sectionTag: string;
@@ -121,6 +126,11 @@ export const messages: Record<Locale, SiteMessages> = {
       sectionTag: 'Technology',
       titlePrefix: 'My',
       titleAccent: 'stack.',
+      pythonBackendTitle: 'Python Backend',
+      architectureTitle: 'Architecture',
+      polyglotBackendTitle: 'Polyglot Backend',
+      cloudDevopsTitle: 'Cloud & DevOps',
+      dataObservabilityTitle: 'Data & Observability',
     },
     projects: {
       sectionTag: 'Featured work',
@@ -188,6 +198,11 @@ export const messages: Record<Locale, SiteMessages> = {
       sectionTag: 'Tecnología',
       titlePrefix: 'Mi',
       titleAccent: 'stack.',
+      pythonBackendTitle: 'Backend en Python',
+      architectureTitle: 'Arquitectura',
+      polyglotBackendTitle: 'Backend políglota',
+      cloudDevopsTitle: 'Nube y DevOps',
+      dataObservabilityTitle: 'Datos y observabilidad',
     },
     projects: {
       sectionTag: 'Trabajo destacado',

@@ -4,6 +4,11 @@ interface Props {
     sectionTag: string;
     titlePrefix: string;
     titleAccent: string;
+    pythonBackendTitle: string;
+    architectureTitle: string;
+    polyglotBackendTitle: string;
+    cloudDevopsTitle: string;
+    dataObservabilityTitle: string;
   };
 }
 
@@ -12,6 +17,11 @@ const {
     sectionTag: 'Technology',
     titlePrefix: 'My',
     titleAccent: 'stack.',
+    pythonBackendTitle: 'Python Backend',
+    architectureTitle: 'Architecture',
+    polyglotBackendTitle: 'Polyglot Backend',
+    cloudDevopsTitle: 'Cloud & DevOps',
+    dataObservabilityTitle: 'Data & Observability',
   },
 } = Astro.props as Props;
 ---
@@ -146,7 +156,7 @@ const {
     </div>
     <div class="stack-grid">
       <div class="stack-card">
-        <div class="stack-card-title">Python Backend</div>
+        <div class="stack-card-title">{content.pythonBackendTitle}</div>
         <div class="stack-tags">
           <span class="stack-tag hi">Python</span>
           <span class="stack-tag hi">FastAPI</span>
@@ -159,7 +169,7 @@ const {
         </div>
       </div>
       <div class="stack-card">
-        <div class="stack-card-title">Architecture</div>
+        <div class="stack-card-title">{content.architectureTitle}</div>
         <div class="stack-tags">
           <span class="stack-tag hi">DDD</span>
           <span class="stack-tag hi">Clean Architecture</span>
@@ -172,7 +182,7 @@ const {
         </div>
       </div>
       <div class="stack-card">
-        <div class="stack-card-title">Polyglot Backend</div>
+        <div class="stack-card-title">{content.polyglotBackendTitle}</div>
         <div class="stack-tags">
           <span class="stack-tag hi">Go</span>
           <span class="stack-tag hi">goroutines</span>
@@ -184,7 +194,7 @@ const {
         </div>
       </div>
       <div class="stack-card">
-        <div class="stack-card-title">Cloud & DevOps</div>
+        <div class="stack-card-title">{content.cloudDevopsTitle}</div>
         <div class="stack-tags">
           <span class="stack-tag hi">Kubernetes</span>
           <span class="stack-tag hi">AWS</span>
@@ -195,7 +205,7 @@ const {
         </div>
       </div>
       <div class="stack-card">
-        <div class="stack-card-title">Data & Observability</div>
+        <div class="stack-card-title">{content.dataObservabilityTitle}</div>
         <div class="stack-tags">
           <span class="stack-tag hi">Redis</span>
           <span class="stack-tag hi">PostgreSQL</span>

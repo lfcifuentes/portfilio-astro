@@ -16,10 +16,16 @@ interface Props {
     titlePrefix: string;
     titleAccent: string;
     subtitle: string;
+    allFilter: string;
+    projects: Array<{
+      title: string;
+      description: string;
+      tag: string;
+    }>;
   };
 }
 
-const projects: Project[] = [
+const projectsData: Project[] = [
   {
     title: 'Terminal Portfolio',
     description:
@@ -72,7 +78,7 @@ const projects: Project[] = [
   },
 ];
 
-const languageFilters = ['All', ...new Set(projects.flatMap((project) => project.languages))];
+const languageFilters = ['All', ...new Set(projectsData.flatMap((project) => project.languages))];
 
 const {
   content = {
@@ -80,6 +86,39 @@ const {
     titlePrefix: 'Personal',
     titleAccent: 'projects.',
     subtitle: 'Front-end experiments, tools, and side projects built on my own time.',
+    allFilter: 'All',
+    projects: [
+      {
+        title: 'Terminal Portfolio',
+        description:
+          'Interactive portfolio built as a terminal emulator. Features multi-language support, custom hooks, and multi-theme switching — all built with React + Vite and SCSS.',
+        tag: 'Frontend',
+      },
+      {
+        title: 'Email Indexer',
+        description:
+          'Full-stack email search engine. Indexes large volumes of emails using ZincSearch, exposes a REST API with Go + Chi, and provides a Vue 3 frontend with dark/light theme and Swagger docs.',
+        tag: 'Full Stack',
+      },
+      {
+        title: 'Go Redis Lock',
+        description:
+          'Reference implementation of a distributed lock system using Redis to prevent duplicate job executions. Useful pattern for cron jobs and background workers in concurrent environments.',
+        tag: 'Backend',
+      },
+      {
+        title: 'Go SOLID',
+        description:
+          'Study project documenting SOLID design principles implemented in Go. Each principle (SRP, OCP, LSP, ISP, DIP) has its own directory with practical examples and explanations.',
+        tag: 'Backend',
+      },
+      {
+        title: 'DDD Go',
+        description:
+          'Reference backend project in Go applying Domain-Driven Design patterns with configuration and CLI tooling. Includes MongoDB integration, environment-based configuration, and test coverage for domain and application behavior.',
+        tag: 'Backend',
+      },
+    ],
   },
 } = Astro.props as Props;
 ---
@@ -400,7 +439,7 @@ const {
       <p class="section-subtitle">
         {content.subtitle}
       </p>
-      {projects.length > 0 && (
+      {projectsData.length > 0 && (
         <div class="project-filters" role="tablist" aria-label="Filter personal projects by language">
           {languageFilters.map((language, index) => (
             <button
@@ -409,7 +448,7 @@ const {
               data-language={language.toLowerCase()}
               aria-pressed={index === 0 ? 'true' : 'false'}
             >
-              {language}
+              {language === 'All' ? content.allFilter : language}
             </button>
           ))}
         </div>
@@ -417,7 +456,7 @@ const {
     </div>
 
     <div class="personal-grid">
-      {projects.length === 0 ? (
+      {projectsData.length === 0 ? (
         <div class="empty-state">
           <svg viewBox="0 0 24 24" fill="none" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
             <rect x="3" y="3" width="18" height="18" rx="3" />
@@ -426,59 +465,62 @@ const {
           <p>// projects coming soon</p>
         </div>
       ) : (
-        projects.map((project) => (
-          <div class="p-card" data-languages={project.languages.map((language) => language.toLowerCase()).join(',')}>
-            {project.image ? (
-              <img
-                class="p-card-img"
-                src={project.image}
-                alt={`${project.title} screenshot`}
-                loading="lazy"
-                decoding="async"
-              />
-            ) : (
-              <div class="p-card-img-placeholder">
-                <svg viewBox="0 0 24 24" fill="none" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
-                  <rect x="3" y="3" width="18" height="18" rx="2" />
-                  <circle cx="8.5" cy="8.5" r="1.5" />
-                  <path d="m21 15-5-5L5 21" />
-                </svg>
+        projectsData.map((project, idx) => {
+          const translatedContent = content.projects[idx];
+          return (
+            <div class="p-card" data-languages={project.languages.map((language) => language.toLowerCase()).join(',')}>
+              {project.image ? (
+                <img
+                  class="p-card-img"
+                  src={project.image}
+                  alt={`${translatedContent.title} screenshot`}
+                  loading="lazy"
+                  decoding="async"
+                />
+              ) : (
+                <div class="p-card-img-placeholder">
+                  <svg viewBox="0 0 24 24" fill="none" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                    <rect x="3" y="3" width="18" height="18" rx="2" />
+                    <circle cx="8.5" cy="8.5" r="1.5" />
+                    <path d="m21 15-5-5L5 21" />
+                  </svg>
+                </div>
+              )}
+              <div class="p-card-body">
+                {translatedContent.tag && <span class="p-card-tag">{translatedContent.tag}</span>}
+                <div class="p-card-title">{translatedContent.title}</div>
+                <p class="p-card-desc">{translatedContent.description}</p>
+                {project.stack.length > 0 && (
+                  <div class="p-card-stack">
+                    {project.stack.map((tech) => <span>{tech}</span>)}
+                  </div>
+                )}
+                {(project.liveUrl || project.githubUrl) && (
+                  <div class="p-card-links">
+                    {project.liveUrl && (
+                      <a href={project.liveUrl} target="_blank" rel="noopener noreferrer" class="p-card-link">
+                        <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                          <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6" />
+                          <polyline points="15 3 21 3 21 9" />
+                          <line x1="10" y1="14" x2="21" y2="3" />
+                        </svg>
+                        Live
+                      </a>
+                    )}
+                    {project.githubUrl && (
+                      <a href={project.githubUrl} target="_blank" rel="noopener noreferrer" class="p-card-link">
+                        <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                          <path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22" />
+                        </svg>
+                        GitHub
+                      </a>
+                    )}
+                  </div>
+                )}
               </div>
-            )}
-            <div class="p-card-body">
-              {project.tag && <span class="p-card-tag">{project.tag}</span>}
-              <div class="p-card-title">{project.title}</div>
-              <p class="p-card-desc">{project.description}</p>
-              {project.stack.length > 0 && (
-                <div class="p-card-stack">
-                  {project.stack.map((tech) => <span>{tech}</span>)}
-                </div>
-              )}
-              {(project.liveUrl || project.githubUrl) && (
-                <div class="p-card-links">
-                  {project.liveUrl && (
-                    <a href={project.liveUrl} target="_blank" rel="noopener noreferrer" class="p-card-link">
-                      <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                        <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6" />
-                        <polyline points="15 3 21 3 21 9" />
-                        <line x1="10" y1="14" x2="21" y2="3" />
-                      </svg>
-                      Live
-                    </a>
-                  )}
-                  {project.githubUrl && (
-                    <a href={project.githubUrl} target="_blank" rel="noopener noreferrer" class="p-card-link">
-                      <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                        <path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22" />
-                      </svg>
-                      GitHub
-                    </a>
-                  )}
-                </div>
-              )}
             </div>
-          </div>
-        ))
+          );
+        })
       )}
       <div class="filter-empty" id="personal-filter-empty">// no projects found for this language</div>
     </div>

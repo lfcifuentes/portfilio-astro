@@ -4,6 +4,33 @@ interface Props {
     sectionTag: string;
     titlePrefix: string;
     titleAccent: string;
+    goTab: string;
+    pythonTab: string;
+    authManagerTag: string;
+    authManagerTitle: string;
+    authManagerDesc: string;
+    adminPlatformTag: string;
+    adminPlatformTitle: string;
+    adminPlatformDesc: string;
+    nomadOsTag: string;
+    nomadOsTitle: string;
+    nomadOsDesc: string;
+    xGrowTag: string;
+    xGrowTitle: string;
+    xGrowDesc: string;
+    prepaidMedicineTag: string;
+    prepaidMedicineTitle: string;
+    prepaidMedicineDesc: string;
+    metricUsersLabel: string;
+    metricPlatformsLabel: string;
+    metricIncidentsLabel: string;
+    metricRuntimeLabel: string;
+    metricLatencyLabel: string;
+    metricDeliveryLabel: string;
+    metricArchitectureLabel: string;
+    metricMaintenanceLabel: string;
+    metricInvestigationsLabel: string;
+    metricMembershipsLabel: string;
   };
 }
 
@@ -12,6 +39,33 @@ const {
     sectionTag: 'Featured work',
     titlePrefix: 'Professional',
     titleAccent: 'projects.',
+    goTab: 'Go',
+    pythonTab: 'Python',
+    authManagerTag: 'Production · Full Ownership',
+    authManagerTitle: 'Auth Manager',
+    authManagerDesc: 'Took full ownership after identifying critical design flaws in the previous version. Rebuilt from scratch working directly with the client — defining architecture, versioned REST contracts and data model. Zero authentication incidents post-launch.',
+    adminPlatformTag: 'Admin Platform · Private Client',
+    adminPlatformTitle: 'Centralized Admin Platform',
+    adminPlatformDesc: 'Unified scattered admin modules into a single panel, defining the internal standard for admin module development. Automated flat-file record loading, eliminating hours of manual work per cycle.',
+    nomadOsTag: 'SaaS · Online Learning',
+    nomadOsTitle: 'NomadOS',
+    nomadOsDesc: 'Online learning and workflow automation platform. Cloud integrations on AWS with end-to-end continuous deployment. Active user base with paying memberships.',
+    xGrowTag: 'Automation · AI Operations',
+    xGrowTitle: 'X-Grow AI Orchestration API',
+    xGrowDesc: 'Built Python services for AI-driven automation flows, exposing internal APIs for chatbot orchestration, validation and downstream integrations with queue-driven workloads.',
+    prepaidMedicineTag: 'Healthcare API · Private Client',
+    prepaidMedicineTitle: 'Prepaid Medicine API 2024',
+    prepaidMedicineDesc: 'Built the complete backend from scratch for a prepaid healthcare client: data model design with DDD architecture, database migrations, and REST APIs for memberships, policy holders, and beneficiaries. Established the project technical foundation with Clean Architecture and FastAPI + Pydantic for strict contract validation, ensuring scalability from day one.',
+    metricUsersLabel: 'Users',
+    metricPlatformsLabel: 'Platforms',
+    metricIncidentsLabel: 'Incidents',
+    metricRuntimeLabel: 'Runtime',
+    metricLatencyLabel: 'Latency',
+    metricDeliveryLabel: 'Delivery',
+    metricArchitectureLabel: 'Architecture',
+    metricMaintenanceLabel: 'Maintenance',
+    metricInvestigationsLabel: 'Investigations',
+    metricMembershipsLabel: 'Memberships',
   },
 } = Astro.props as Props;
 ---
@@ -373,10 +427,10 @@ const {
       <h2 class="section-title">{content.titlePrefix} <span class="accent">{content.titleAccent}</span></h2>
       <div class="project-switch" role="tablist" aria-label="Filter projects by language">
         <button class="switch-btn is-active" type="button" role="tab" aria-selected="true" aria-controls="projects-go" data-target="go">
-          Go
+          {content.goTab}
         </button>
         <button class="switch-btn" type="button" role="tab" aria-selected="false" aria-controls="projects-python" data-target="python">
-          Python
+          {content.pythonTab}
         </button>
       </div>
     </div>
@@ -385,25 +439,23 @@ const {
         <!-- Auth Manager -->
         <div class="project-card featured">
           <div>
-            <span class="project-tag">Production · Full Ownership</span>
-            <div class="project-name">Auth Manager</div>
+            <span class="project-tag">{content.authManagerTag}</span>
+            <div class="project-name">{content.authManagerTitle}</div>
             <p class="project-desc">
-              Took full ownership after identifying critical design flaws in the previous version.
-              Rebuilt from scratch working directly with the client — defining architecture,
-              versioned REST contracts and data model. Zero authentication incidents post-launch.
+              {content.authManagerDesc}
             </p>
             <div class="project-metrics">
               <div class="metric">
                 <div class="val">70K+</div>
-                <div class="lbl">Users</div>
+                <div class="lbl">{content.metricUsersLabel}</div>
               </div>
               <div class="metric">
                 <div class="val">5</div>
-                <div class="lbl">Platforms</div>
+                <div class="lbl">{content.metricPlatformsLabel}</div>
               </div>
               <div class="metric">
                 <div class="val">0</div>
-                <div class="lbl">Incidents</div>
+                <div class="lbl">{content.metricIncidentsLabel}</div>
               </div>
             </div>
             <div class="project-stack">
@@ -450,20 +502,19 @@ const {
 
         <!-- Centralized Admin Platform -->
         <div class="project-card">
-          <span class="project-tag green-tag">Admin Platform · Private Client</span>
-          <div class="project-name">Centralized Admin Platform</div>
+          <span class="project-tag green-tag">{content.adminPlatformTag}</span>
+          <div class="project-name">{content.adminPlatformTitle}</div>
           <p class="project-desc">
-            Unified scattered admin modules into a single panel, defining the internal standard
-            for admin module development. Automated flat-file record loading, eliminating hours of manual work per cycle.
+            {content.adminPlatformDesc}
           </p>
           <div class="project-metrics">
             <div class="metric">
               <div class="val">28K</div>
-              <div class="lbl">Maintenance</div>
+              <div class="lbl">{content.metricMaintenanceLabel}</div>
             </div>
             <div class="metric">
               <div class="val">34K</div>
-              <div class="lbl">Investigations</div>
+              <div class="lbl">{content.metricInvestigationsLabel}</div>
             </div>
           </div>
           <div class="project-stack">
@@ -473,11 +524,10 @@ const {
 
         <!-- NomadOS -->
         <div class="project-card">
-          <span class="project-tag">SaaS · Online Learning</span>
-          <div class="project-name">NomadOS</div>
+          <span class="project-tag">{content.nomadOsTag}</span>
+          <div class="project-name">{content.nomadOsTitle}</div>
           <p class="project-desc">
-            Online learning and workflow automation platform. Cloud integrations on AWS with end-to-end
-            continuous deployment. Active user base with paying memberships.
+            {content.nomadOsDesc}
           </p>
           <div class="project-metrics">
             <div class="metric">
@@ -486,7 +536,7 @@ const {
             </div>
             <div class="metric">
               <div class="val">~2K</div>
-              <div class="lbl">Memberships</div>
+              <div class="lbl">{content.metricMembershipsLabel}</div>
             </div>
           </div>
           <div class="project-stack">
@@ -499,20 +549,19 @@ const {
     <div id="projects-python" class="project-panel" role="tabpanel" aria-label="Python projects">
       <div class="projects-grid">
         <div class="project-card">
-          <span class="project-tag">Automation · AI Operations</span>
-          <div class="project-name">X-Grow AI Orchestration API</div>
+          <span class="project-tag">{content.xGrowTag}</span>
+          <div class="project-name">{content.xGrowTitle}</div>
           <p class="project-desc">
-            Built Python services for AI-driven automation flows, exposing internal APIs for chatbot orchestration,
-            validation and downstream integrations with queue-driven workloads.
+            {content.xGrowDesc}
           </p>
           <div class="project-metrics">
             <div class="metric">
               <div class="val">24/7</div>
-              <div class="lbl">Runtime</div>
+              <div class="lbl">{content.metricRuntimeLabel}</div>
             </div>
             <div class="metric">
               <div class="val">Low</div>
-              <div class="lbl">Latency</div>
+              <div class="lbl">{content.metricLatencyLabel}</div>
             </div>
           </div>
           <div class="project-stack">
@@ -521,22 +570,19 @@ const {
         </div>
 
         <div class="project-card">
-          <span class="project-tag green-tag">Healthcare API · Private Client</span>
-          <div class="project-name">Prepaid Medicine API 2024</div>
+          <span class="project-tag green-tag">{content.prepaidMedicineTag}</span>
+          <div class="project-name">{content.prepaidMedicineTitle}</div>
           <p class="project-desc">
-            Built the complete backend from scratch for a prepaid healthcare client: data model design with
-            DDD architecture, database migrations, and REST APIs for memberships, policy holders, and beneficiaries.
-            Established the project technical foundation with Clean Architecture and FastAPI + Pydantic for strict
-            contract validation, ensuring scalability from day one.
+            {content.prepaidMedicineDesc}
           </p>
           <div class="project-metrics">
             <div class="metric">
               <div class="val">2024</div>
-              <div class="lbl">Delivery</div>
+              <div class="lbl">{content.metricDeliveryLabel}</div>
             </div>
             <div class="metric">
               <div class="val">DDD</div>
-              <div class="lbl">Architecture</div>
+              <div class="lbl">{content.metricArchitectureLabel}</div>
             </div>
           </div>
           <div class="project-stack">

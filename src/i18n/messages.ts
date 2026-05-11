@@ -67,12 +67,45 @@ export interface SiteMessages {
     sectionTag: string;
     titlePrefix: string;
     titleAccent: string;
+    goTab: string;
+    pythonTab: string;
+    authManagerTag: string;
+    authManagerTitle: string;
+    authManagerDesc: string;
+    adminPlatformTag: string;
+    adminPlatformTitle: string;
+    adminPlatformDesc: string;
+    nomadOsTag: string;
+    nomadOsTitle: string;
+    nomadOsDesc: string;
+    xGrowTag: string;
+    xGrowTitle: string;
+    xGrowDesc: string;
+    prepaidMedicineTag: string;
+    prepaidMedicineTitle: string;
+    prepaidMedicineDesc: string;
+    metricUsersLabel: string;
+    metricPlatformsLabel: string;
+    metricIncidentsLabel: string;
+    metricRuntimeLabel: string;
+    metricLatencyLabel: string;
+    metricDeliveryLabel: string;
+    metricArchitectureLabel: string;
+    metricMaintenanceLabel: string;
+    metricInvestigationsLabel: string;
+    metricMembershipsLabel: string;
   };
   personalProjects: {
     sectionTag: string;
     titlePrefix: string;
     titleAccent: string;
     subtitle: string;
+    allFilter: string;
+    projects: Array<{
+      title: string;
+      description: string;
+      tag: string;
+    }>;
   };
   experienceSection: {
     sectionTag: string;
@@ -171,12 +204,77 @@ export const messages: Record<Locale, SiteMessages> = {
       sectionTag: 'Featured work',
       titlePrefix: 'Professional',
       titleAccent: 'projects.',
+      goTab: 'Go',
+      pythonTab: 'Python',
+      authManagerTag: 'Production · Full Ownership',
+      authManagerTitle: 'Auth Manager',
+      authManagerDesc:
+        'Took full ownership after identifying critical design flaws in the previous version. Rebuilt from scratch working directly with the client — defining architecture, versioned REST contracts and data model. Zero authentication incidents post-launch.',
+      adminPlatformTag: 'Admin Platform · Private Client',
+      adminPlatformTitle: 'Centralized Admin Platform',
+      adminPlatformDesc:
+        'Unified scattered admin modules into a single panel, defining the internal standard for admin module development. Automated flat-file record loading, eliminating hours of manual work per cycle.',
+      nomadOsTag: 'SaaS · Online Learning',
+      nomadOsTitle: 'NomadOS',
+      nomadOsDesc:
+        'Online learning and workflow automation platform. Cloud integrations on AWS with end-to-end continuous deployment. Active user base with paying memberships.',
+      xGrowTag: 'Automation · AI Operations',
+      xGrowTitle: 'X-Grow AI Orchestration API',
+      xGrowDesc:
+        'Built Python services for AI-driven automation flows, exposing internal APIs for chatbot orchestration, validation and downstream integrations with queue-driven workloads.',
+      prepaidMedicineTag: 'Healthcare API · Private Client',
+      prepaidMedicineTitle: 'Prepaid Medicine API 2024',
+      prepaidMedicineDesc:
+        'Built the complete backend from scratch for a prepaid healthcare client: data model design with DDD architecture, database migrations, and REST APIs for memberships, policy holders, and beneficiaries. Established the project technical foundation with Clean Architecture and FastAPI + Pydantic for strict contract validation, ensuring scalability from day one.',
+      metricUsersLabel: 'Users',
+      metricPlatformsLabel: 'Platforms',
+      metricIncidentsLabel: 'Incidents',
+      metricRuntimeLabel: 'Runtime',
+      metricLatencyLabel: 'Latency',
+      metricDeliveryLabel: 'Delivery',
+      metricArchitectureLabel: 'Architecture',
+      metricMaintenanceLabel: 'Maintenance',
+      metricInvestigationsLabel: 'Investigations',
+      metricMembershipsLabel: 'Memberships',
     },
     personalProjects: {
       sectionTag: 'Side work',
       titlePrefix: 'Personal',
       titleAccent: 'projects.',
       subtitle: 'Front-end experiments, tools, and side projects built on my own time.',
+      allFilter: 'All',
+      projects: [
+        {
+          title: 'Terminal Portfolio',
+          description:
+            'Interactive portfolio built as a terminal emulator. Features multi-language support, custom hooks, and multi-theme switching — all built with React + Vite and SCSS.',
+          tag: 'Frontend',
+        },
+        {
+          title: 'Email Indexer',
+          description:
+            'Full-stack email search engine. Indexes large volumes of emails using ZincSearch, exposes a REST API with Go + Chi, and provides a Vue 3 frontend with dark/light theme and Swagger docs.',
+          tag: 'Full Stack',
+        },
+        {
+          title: 'Go Redis Lock',
+          description:
+            'Reference implementation of a distributed lock system using Redis to prevent duplicate job executions. Useful pattern for cron jobs and background workers in concurrent environments.',
+          tag: 'Backend',
+        },
+        {
+          title: 'Go SOLID',
+          description:
+            'Study project documenting SOLID design principles implemented in Go. Each principle (SRP, OCP, LSP, ISP, DIP) has its own directory with practical examples and explanations.',
+          tag: 'Backend',
+        },
+        {
+          title: 'DDD Go',
+          description:
+            'Reference backend project in Go applying Domain-Driven Design patterns with configuration and CLI tooling. Includes MongoDB integration, environment-based configuration, and test coverage for domain and application behavior.',
+          tag: 'Backend',
+        },
+      ],
     },
     experienceSection: {
       sectionTag: 'Career',
@@ -300,12 +398,77 @@ export const messages: Record<Locale, SiteMessages> = {
       sectionTag: 'Trabajo destacado',
       titlePrefix: 'Proyectos',
       titleAccent: 'profesionales.',
+      goTab: 'Go',
+      pythonTab: 'Python',
+      authManagerTag: 'Producción · Ownership Completo',
+      authManagerTitle: 'Auth Manager',
+      authManagerDesc:
+        'Asumí ownership completo después de identificar fallos críticos de diseño en la versión anterior. Reconstruida desde cero trabajando directamente con el cliente — definiendo arquitectura, contratos REST versionados y modelo de datos. Cero incidentes de autenticación post-lanzamiento.',
+      adminPlatformTag: 'Plataforma Admin · Cliente Privado',
+      adminPlatformTitle: 'Plataforma de Administración Centralizada',
+      adminPlatformDesc:
+        'Unificación de módulos admin dispersos en un único panel, definiendo el estándar interno para desarrollo de módulos admin. Automatización de carga de archivos, eliminando horas de trabajo manual por ciclo.',
+      nomadOsTag: 'SaaS · Educación Online',
+      nomadOsTitle: 'NomadOS',
+      nomadOsDesc:
+        'Plataforma de educación online y automatización de flujos de trabajo. Integraciones cloud en AWS con deployment continuo end-to-end. Base de usuarios activos con membresías pagadas.',
+      xGrowTag: 'Automatización · Operaciones IA',
+      xGrowTitle: 'X-Grow AI Orchestration API',
+      xGrowDesc:
+        'Construí servicios Python para flujos de automatización impulsados por IA, exponiendo APIs internas para orquestación de chatbots, validación e integraciones downstream con workloads manejados por colas.',
+      prepaidMedicineTag: 'Healthcare API · Cliente Privado',
+      prepaidMedicineTitle: 'API Medicina Prepagada 2024',
+      prepaidMedicineDesc:
+        'Construí el backend completo desde cero para un cliente de medicina prepagada: diseño de modelo de datos con arquitectura DDD, migraciones de base de datos y APIs REST para membresías, titulares de pólizas y beneficiarios. Establecí la base técnica del proyecto con Clean Architecture y FastAPI + Pydantic para validación estricta de contratos, asegurando escalabilidad desde el primer día.',
+      metricUsersLabel: 'Usuarios',
+      metricPlatformsLabel: 'Plataformas',
+      metricIncidentsLabel: 'Incidentes',
+      metricRuntimeLabel: 'Runtime',
+      metricLatencyLabel: 'Latencia',
+      metricDeliveryLabel: 'Entrega',
+      metricArchitectureLabel: 'Arquitectura',
+      metricMaintenanceLabel: 'Mantenimiento',
+      metricInvestigationsLabel: 'Investigaciones',
+      metricMembershipsLabel: 'Membresías',
     },
     personalProjects: {
       sectionTag: 'Proyectos personales',
       titlePrefix: 'Proyectos',
       titleAccent: 'personales.',
       subtitle: 'Experimentos de front-end, herramientas y side projects construidos en mi tiempo personal.',
+      allFilter: 'Todos',
+      projects: [
+        {
+          title: 'Terminal Portfolio',
+          description:
+            'Portafolio interactivo construido como emulador de terminal. Características de soporte multi-idioma, custom hooks y cambio de temas — todo construido con React + Vite y SCSS.',
+          tag: 'Frontend',
+        },
+        {
+          title: 'Email Indexer',
+          description:
+            'Motor de búsqueda de emails full-stack. Indexa grandes volúmenes de emails usando ZincSearch, expone una API REST con Go + Chi, y proporciona un frontend Vue 3 con tema oscuro/claro y docs de Swagger.',
+          tag: 'Full Stack',
+        },
+        {
+          title: 'Go Redis Lock',
+          description:
+            'Implementación de referencia de un sistema de bloqueo distribuido usando Redis para prevenir ejecuciones duplicadas de jobs. Patrón útil para cron jobs y background workers en entornos concurrentes.',
+          tag: 'Backend',
+        },
+        {
+          title: 'Go SOLID',
+          description:
+            'Proyecto de estudio documentando principios SOLID implementados en Go. Cada principio (SRP, OCP, LSP, ISP, DIP) tiene su propio directorio con ejemplos prácticos y explicaciones.',
+          tag: 'Backend',
+        },
+        {
+          title: 'DDD Go',
+          description:
+            'Proyecto backend de referencia en Go aplicando patrones Domain-Driven Design con configuración y tooling CLI. Incluye integración con MongoDB, configuración basada en ambiente y cobertura de tests para comportamiento de dominio y aplicación.',
+          tag: 'Backend',
+        },
+      ],
     },
     experienceSection: {
       sectionTag: 'Trayectoria',

@@ -4,6 +4,7 @@ interface Project {
   description: string;
   image?: string;
   stack: string[];
+  languages: string[];
   liveUrl?: string;
   githubUrl?: string;
   tag?: string;
@@ -25,6 +26,7 @@ const projects: Project[] = [
       'Interactive portfolio built as a terminal emulator. Features multi-language support, custom hooks, and multi-theme switching — all built with React + Vite and SCSS.',
     image: '/terminal_img_1.png',
     stack: ['React 19', 'Vite', 'SCSS', 'i18n', 'Custom Hooks'],
+    languages: ['JavaScript'],
     liveUrl: 'https://terminal-portfolio-lcifuentes.netlify.app',
     githubUrl: 'https://github.com/lfcifuentes/terminal-portfolio',
     tag: 'Frontend',
@@ -35,6 +37,7 @@ const projects: Project[] = [
       'Full-stack email search engine. Indexes large volumes of emails using ZincSearch, exposes a REST API with Go + Chi, and provides a Vue 3 frontend with dark/light theme and Swagger docs.',
     image: 'https://raw.githubusercontent.com/lfcifuentes/email-indexer/main/images/index_dark.png',
     stack: ['Go', 'Chi', 'ZincSearch', 'Vue 3', 'TypeScript', 'Docker'],
+    languages: ['Go', 'TypeScript'],
     githubUrl: 'https://github.com/lfcifuentes/email-indexer',
     tag: 'Full Stack',
   },
@@ -44,6 +47,7 @@ const projects: Project[] = [
       'Reference implementation of a distributed lock system using Redis to prevent duplicate job executions. Useful pattern for cron jobs and background workers in concurrent environments.',
     image: '/go_redis_3.png',
     stack: ['Go', 'Redis', 'Docker'],
+    languages: ['Go'],
     githubUrl: 'https://github.com/lfcifuentes/go-redis-lock-example',
     tag: 'Backend',
   },
@@ -53,10 +57,22 @@ const projects: Project[] = [
       'Study project documenting SOLID design principles implemented in Go. Each principle (SRP, OCP, LSP, ISP, DIP) has its own directory with practical examples and explanations.',
     image: '/solid.png',
     stack: ['Go'],
+    languages: ['Go'],
     githubUrl: 'https://github.com/lfcifuentes/go-solid',
     tag: 'Backend',
   },
+  {
+    title: 'DDD Go',
+    description:
+      'Reference backend project in Go applying Domain-Driven Design patterns with configuration and CLI tooling. Includes MongoDB integration, environment-based configuration, and test coverage for domain and application behavior.',
+    stack: ['Go', 'DDD', 'MongoDB', 'Cobra', 'Viper', 'godotenv', 'Testify', 'UUID'],
+    languages: ['Go'],
+    githubUrl: 'https://github.com/lfcifuentes/ddd-go',
+    tag: 'Backend',
+  },
 ];
+
+const languageFilters = ['All', ...new Set(projects.flatMap((project) => project.languages))];
 
 const {
   content = {
@@ -117,6 +133,37 @@ const {
     line-height: 1.7;
   }
 
+  .project-filters {
+    margin-top: 16px;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+  }
+
+  .filter-chip {
+    border: 1px solid var(--border2);
+    background: var(--bg);
+    color: var(--muted);
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 11px;
+    padding: 6px 10px;
+    border-radius: 6px;
+    letter-spacing: 0.8px;
+    cursor: pointer;
+    transition: all 0.2s ease;
+  }
+
+  .filter-chip:hover {
+    color: var(--text);
+    border-color: rgba(52, 131, 250, 0.35);
+  }
+
+  .filter-chip.is-active {
+    color: var(--blue);
+    border-color: rgba(52, 131, 250, 0.35);
+    background: var(--blue-dim);
+  }
+
   /* ── Grid ── */
   .personal-grid {
     display: grid;
@@ -133,6 +180,10 @@ const {
     display: flex;
     flex-direction: column;
     transition: border-color 0.2s, transform 0.2s;
+  }
+
+  .p-card.is-hidden {
+    display: none;
   }
 
   .p-card:hover {
@@ -265,6 +316,23 @@ const {
     gap: 12px;
   }
 
+  .filter-empty {
+    grid-column: 1 / -1;
+    border: 1px dashed var(--border2);
+    border-radius: 12px;
+    padding: 34px 24px;
+    text-align: center;
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 12px;
+    color: var(--muted);
+    letter-spacing: 1px;
+    display: none;
+  }
+
+  .filter-empty.is-visible {
+    display: block;
+  }
+
   .empty-state svg {
     width: 40px;
     height: 40px;
@@ -332,6 +400,20 @@ const {
       <p class="section-subtitle">
         {content.subtitle}
       </p>
+      {projects.length > 0 && (
+        <div class="project-filters" role="tablist" aria-label="Filter personal projects by language">
+          {languageFilters.map((language, index) => (
+            <button
+              class={`filter-chip ${index === 0 ? 'is-active' : ''}`}
+              type="button"
+              data-language={language.toLowerCase()}
+              aria-pressed={index === 0 ? 'true' : 'false'}
+            >
+              {language}
+            </button>
+          ))}
+        </div>
+      )}
     </div>
 
     <div class="personal-grid">
@@ -345,7 +427,7 @@ const {
         </div>
       ) : (
         projects.map((project) => (
-          <div class="p-card">
+          <div class="p-card" data-languages={project.languages.map((language) => language.toLowerCase()).join(',')}>
             {project.image ? (
               <img
                 class="p-card-img"
@@ -398,6 +480,45 @@ const {
           </div>
         ))
       )}
+      <div class="filter-empty" id="personal-filter-empty">// no projects found for this language</div>
     </div>
   </div>
 </section>
+
+<script is:inline>
+  const personalSection = document.querySelector('#personal-projects');
+
+  if (personalSection) {
+    const chips = Array.from(personalSection.querySelectorAll('.filter-chip'));
+    const cards = Array.from(personalSection.querySelectorAll('.p-card[data-languages]'));
+    const emptyState = personalSection.querySelector('#personal-filter-empty');
+
+    const setFilter = (language) => {
+      chips.forEach((chip) => {
+        const isActive = chip.dataset.language === language;
+        chip.classList.toggle('is-active', isActive);
+        chip.setAttribute('aria-pressed', String(isActive));
+      });
+
+      let visibleCount = 0;
+
+      cards.forEach((card) => {
+        const languages = (card.dataset.languages || '').split(',').map((item) => item.trim());
+        const shouldShow = language === 'all' || languages.includes(language);
+        card.classList.toggle('is-hidden', !shouldShow);
+        if (shouldShow) visibleCount += 1;
+      });
+
+      if (emptyState) {
+        emptyState.classList.toggle('is-visible', visibleCount === 0);
+      }
+    };
+
+    chips.forEach((chip) => {
+      chip.addEventListener('click', () => {
+        const language = chip.dataset.language;
+        if (language) setFilter(language);
+      });
+    });
+  }
+</script>

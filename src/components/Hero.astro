@@ -56,6 +56,9 @@ const {
 
 const pythonCvUrl = '/pdf/CV_Luis_Cifuentes_Python.pdf';
 const goCvUrl = '/pdf/CV_Luis_Cifuentes.pdf';
+const highlightedRole = content.role
+  .replace(/Python/g, '<span class="role-python">Python</span>')
+  .replace(/\bGo\b/g, '<span class="role-go">Go</span>');
 ---
 
 <style>
@@ -132,6 +135,26 @@ const goCvUrl = '/pdf/CV_Luis_Cifuentes.pdf';
     margin-bottom: 28px;
     opacity: 0;
     animation: fadeUp 0.6s ease forwards 0.3s;
+  }
+
+  .hero-role :global(.role-python),
+  .hero-role :global(.role-go) {
+    font-weight: 700;
+    letter-spacing: 1px;
+    padding: 2px 6px;
+    border-radius: 4px;
+  }
+
+  .hero-role :global(.role-python) {
+    color: var(--blue);
+    background: rgba(52, 131, 250, 0.16);
+    border: 1px solid rgba(52, 131, 250, 0.35);
+  }
+
+  .hero-role :global(.role-go) {
+    color: var(--green);
+    background: rgba(0, 210, 150, 0.14);
+    border: 1px solid rgba(0, 210, 150, 0.35);
   }
 
   .hero-desc {
@@ -430,7 +453,7 @@ const goCvUrl = '/pdf/CV_Luis_Cifuentes.pdf';
           Fernando<br />
           <span class="accent">Cifuentes.</span>
         </h1>
-        <div class="hero-role">{content.role}</div>
+        <div class="hero-role" set:html={highlightedRole}></div>
         <p class="hero-desc">
           {content.description}
         </p>

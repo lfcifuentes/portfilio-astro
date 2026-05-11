@@ -34,8 +34,8 @@ const {
       'Building high-performance distributed systems with +8 years of experience. Full ownership from architecture to production, including rebuilding critical systems from scratch while working directly with clients.',
     viewProjects: 'View projects',
     linkedIn: 'LinkedIn →',
-    pythonCvCta: 'Request Python CV',
-    goCvCta: 'Request Go CV',
+    pythonCvCta: 'Download Python CV',
+    goCvCta: 'Download Go CV',
     termFile: '~ engineer.go',
     termLoading: 'distributed systems',
     termStack: 'Go · K8s · Redis · AWS',
@@ -54,8 +54,8 @@ const {
   },
 } = Astro.props as Props;
 
-const pythonCvMailto = 'mailto:luis@lcifuentes.dev?subject=Python%20CV%20Request';
-const goCvMailto = 'mailto:luis@lcifuentes.dev?subject=Go%20CV%20Request';
+const pythonCvUrl = '/pdf/CV_Luis_Cifuentes_Python.pdf';
+const goCvUrl = '/pdf/CV_Luis_Cifuentes.pdf';
 ---
 
 <style>
@@ -437,8 +437,8 @@ const goCvMailto = 'mailto:luis@lcifuentes.dev?subject=Go%20CV%20Request';
         <div class="hero-actions">
           <a href="#projects" class="btn-primary">{content.viewProjects}</a>
           <a href="https://www.linkedin.com/in/luis-fernando-cifuentes-3a6a90119/" target="_blank" class="btn-outline">{content.linkedIn}</a>
-          <a href={pythonCvMailto} class="btn-outline">{content.pythonCvCta}</a>
-          <a href={goCvMailto} class="btn-outline">{content.goCvCta}</a>
+          <a href={pythonCvUrl} class="btn-outline" download="CV_Luis_Cifuentes_Python.pdf">{content.pythonCvCta}</a>
+          <a href={goCvUrl} class="btn-outline" download="CV_Luis_Cifuentes.pdf">{content.goCvCta}</a>
         </div>
       </div>
 

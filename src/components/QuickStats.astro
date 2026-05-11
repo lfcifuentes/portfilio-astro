@@ -1,0 +1,110 @@
+---
+interface Props {
+  content?: {
+    statYearsValue: string;
+    statYearsLabel: string;
+    statSystemsValue: string;
+    statSystemsLabel: string;
+    statTechnologiesValue: string;
+    statTechnologiesLabel: string;
+  };
+}
+
+const {
+  content = {
+    statYearsValue: '8+',
+    statYearsLabel: 'years building backend',
+    statSystemsValue: '10+',
+    statSystemsLabel: 'systems and APIs delivered',
+    statTechnologiesValue: '8+',
+    statTechnologiesLabel: 'technologies used in production',
+  },
+} = Astro.props as Props;
+---
+
+<style>
+  #quick-stats {
+    margin-top: -20px;
+    padding: 0 0 56px;
+  }
+
+  .quick-stats-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1px;
+    background: var(--border2);
+    border: 1px solid var(--border2);
+    border-radius: 10px;
+    overflow: hidden;
+  }
+
+  .quick-stat-item {
+    background: var(--bg2);
+    padding: 18px 16px;
+    text-align: center;
+  }
+
+  .quick-stat-value {
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: 26px;
+    font-weight: 800;
+    color: var(--blue);
+    line-height: 1;
+  }
+
+  .quick-stat-label {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 10px;
+    color: var(--muted);
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    margin-top: 6px;
+    line-height: 1.4;
+  }
+
+  @media (max-width: 900px) {
+    #quick-stats {
+      margin-top: 0;
+      padding-bottom: 48px;
+    }
+
+    .quick-stats-grid {
+      grid-template-columns: repeat(3, 1fr);
+    }
+  }
+
+  @media (max-width: 700px) {
+    #quick-stats {
+      padding-bottom: 42px;
+    }
+  }
+
+  @media (max-width: 520px) {
+    .quick-stats-grid {
+      grid-template-columns: 1fr;
+    }
+
+    .quick-stat-item {
+      padding: 16px 14px;
+    }
+  }
+</style>
+
+<section id="quick-stats">
+  <div class="container">
+    <div class="quick-stats-grid">
+      <div class="quick-stat-item">
+        <div class="quick-stat-value">{content.statYearsValue}</div>
+        <div class="quick-stat-label">{content.statYearsLabel}</div>
+      </div>
+      <div class="quick-stat-item">
+        <div class="quick-stat-value">{content.statSystemsValue}</div>
+        <div class="quick-stat-label">{content.statSystemsLabel}</div>
+      </div>
+      <div class="quick-stat-item">
+        <div class="quick-stat-value">{content.statTechnologiesValue}</div>
+        <div class="quick-stat-label">{content.statTechnologiesLabel}</div>
+      </div>
+    </div>
+  </div>
+</section>

@@ -2,6 +2,7 @@
 import MainLayout from '../../layouts/MainLayout.astro';
 import Nav from '../../components/Nav.astro';
 import Hero from '../../components/Hero.astro';
+import QuickStats from '../../components/QuickStats.astro';
 import About from '../../components/About.astro';
 import Stack from '../../components/Stack.astro';
 import Projects from '../../components/Projects.astro';
@@ -23,6 +24,7 @@ const t = getMessages(lang);
 >
   <Nav lang={lang} labels={t.nav} />
   <Hero content={t.hero} />
+  <QuickStats content={t.hero} />
   <About content={t.about} />
   <Stack content={t.stack} />
   <Projects content={t.projects} />

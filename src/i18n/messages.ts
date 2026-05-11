@@ -31,9 +31,14 @@ export interface SiteMessages {
     termExp: string;
     termLang: string;
     termArch: string;
-    statUsers: string;
-    statLatency: string;
-    statRecords: string;
+    statYearsValue: string;
+    statYearsLabel: string;
+    statUsersValue: string;
+    statUsersLabel: string;
+    statSystemsValue: string;
+    statSystemsLabel: string;
+    statTechnologiesValue: string;
+    statTechnologiesLabel: string;
   };
   about: {
     sectionTag: string;
@@ -130,9 +135,14 @@ export const messages: Record<Locale, SiteMessages> = {
       termExp: '+8 years',
       termLang: 'Python + Go',
       termArch: 'event-driven · microservices',
-      statUsers: 'users served',
-      statLatency: 'latency drop',
-      statRecords: 'records managed',
+      statYearsValue: '8+',
+      statYearsLabel: 'years building backend',
+      statUsersValue: '70K+',
+      statUsersLabel: 'users served in production',
+      statSystemsValue: '10+',
+      statSystemsLabel: 'systems and APIs delivered',
+      statTechnologiesValue: '8+',
+      statTechnologiesLabel: 'technologies used in production',
     },
     about: {
       sectionTag: 'About',
@@ -254,9 +264,14 @@ export const messages: Record<Locale, SiteMessages> = {
       termExp: '+8 años',
       termLang: 'Python + Go',
       termArch: 'event-driven · microservicios',
-      statUsers: 'usuarios servidos',
-      statLatency: 'reducción latencia',
-      statRecords: 'registros gestionados',
+      statYearsValue: '8+',
+      statYearsLabel: 'años construyendo backend',
+      statUsersValue: '70K+',
+      statUsersLabel: 'usuarios servidos en producción',
+      statSystemsValue: '10+',
+      statSystemsLabel: 'sistemas y APIs entregados',
+      statTechnologiesValue: '8+',
+      statTechnologiesLabel: 'tecnologías usadas en producción',
     },
     about: {
       sectionTag: 'Sobre mí',

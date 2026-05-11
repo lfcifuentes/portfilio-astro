@@ -30,9 +30,31 @@ const personSchema = {
   '@context': 'https://schema.org',
   '@type': 'Person',
   name: 'Luis Fernando Cifuentes',
+  givenName: 'Luis Fernando',
+  familyName: 'Cifuentes',
   url: siteURL.toString(),
+  image: new URL('/og-image.svg', siteURL).toString(),
   jobTitle: 'Senior Backend Engineer',
   description,
+  address: {
+    '@type': 'PostalAddress',
+    addressLocality: 'Cali',
+    addressCountry: 'CO',
+  },
+  knowsAbout: [
+    'Python', 'Go', 'FastAPI', 'Apache Kafka',
+    'Kubernetes', 'Docker', 'PostgreSQL', 'Redis',
+    'Distributed Systems', 'Event-Driven Architecture',
+    'Domain-Driven Design', 'Microservices',
+  ],
+  sameAs: [
+    'https://www.linkedin.com/in/luis-fernando-cifuentes-3a6a90119/',
+    'https://github.com/lfcifuentes',
+  ],
+  worksFor: {
+    '@type': 'Organization',
+    name: 'X-Grow AI',
+  },
 };
 ---
 

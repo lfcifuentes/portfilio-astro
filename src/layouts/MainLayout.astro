@@ -25,6 +25,7 @@ const siteURL = Astro.site ?? new URL(Astro.url.origin);
 const finalCanonicalURL = canonicalURL ?? new URL(Astro.url.pathname, siteURL).toString();
 const finalOgImageURL = new URL(ogImage, siteURL).toString();
 const finalOgLocale = ogLocale ?? (lang === 'es' ? 'es_ES' : 'en_US');
+const scrollTopAriaLabel = lang === 'es' ? 'Volver arriba' : 'Scroll to top';
 
 const personSchema = {
   '@context': 'https://schema.org',
@@ -92,8 +93,86 @@ const personSchema = {
       href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=Plus+Jakarta+Sans:wght@400;500;600&family=Space+Grotesk:wght@700;800&display=swap"
       rel="stylesheet"
     />
+    <style>
+      .scroll-top-btn {
+        position: fixed;
+        right: 24px;
+        bottom: 24px;
+        width: 46px;
+        height: 46px;
+        border-radius: 999px;
+        border: 1px solid rgba(52, 131, 250, 0.35);
+        background: rgba(10, 14, 26, 0.88);
+        color: var(--blue);
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        cursor: pointer;
+        z-index: 20;
+        opacity: 0;
+        visibility: hidden;
+        transform: translateY(10px);
+        transition: opacity 0.2s ease, transform 0.2s ease, visibility 0.2s ease, border-color 0.2s ease;
+        backdrop-filter: blur(6px);
+        box-shadow: 0 8px 30px rgba(0, 0, 0, 0.3);
+      }
+
+      .scroll-top-btn svg {
+        width: 18px;
+        height: 18px;
+        stroke: currentColor;
+        stroke-width: 2.2;
+      }
+
+      .scroll-top-btn:hover {
+        border-color: rgba(52, 131, 250, 0.65);
+      }
+
+      .scroll-top-btn.is-visible {
+        opacity: 1;
+        visibility: visible;
+        transform: translateY(0);
+      }
+
+      .scroll-top-btn:focus-visible {
+        outline: 2px solid rgba(52, 131, 250, 0.7);
+        outline-offset: 2px;
+      }
+
+      @media (max-width: 520px) {
+        .scroll-top-btn {
+          right: 14px;
+          bottom: 14px;
+          width: 42px;
+          height: 42px;
+        }
+      }
+    </style>
   </head>
   <body>
     <slot />
+    <button id="scroll-top-btn" class="scroll-top-btn" type="button" aria-label={scrollTopAriaLabel}>
+      <svg viewBox="0 0 24 24" fill="none" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+        <path d="M12 5v14" />
+        <path d="m6 11 6-6 6 6" />
+      </svg>
+    </button>
+    <script is:inline>
+      const scrollTopButton = document.querySelector('#scroll-top-btn');
+
+      if (scrollTopButton) {
+        const toggleButton = () => {
+          const isVisible = window.scrollY > 300;
+          scrollTopButton.classList.toggle('is-visible', isVisible);
+        };
+
+        window.addEventListener('scroll', toggleButton, { passive: true });
+        scrollTopButton.addEventListener('click', () => {
+          window.scrollTo({ top: 0, behavior: 'smooth' });
+        });
+
+        toggleButton();
+      }
+    </script>
   </body>
 </html>

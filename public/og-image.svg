@@ -1,0 +1,137 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="630" viewBox="0 0 1200 630">
+  <defs>
+    <!-- Background -->
+    <linearGradient id="bg" x1="0" y1="0" x2="1200" y2="630" gradientUnits="userSpaceOnUse">
+      <stop offset="0%" stop-color="#0a0e1a"/>
+      <stop offset="100%" stop-color="#0d1526"/>
+    </linearGradient>
+    <!-- Blue glow -->
+    <radialGradient id="glow" cx="75%" cy="30%" r="45%">
+      <stop offset="0%" stop-color="#3483FA" stop-opacity="0.18"/>
+      <stop offset="100%" stop-color="#3483FA" stop-opacity="0"/>
+    </radialGradient>
+    <!-- Green glow -->
+    <radialGradient id="glowGreen" cx="15%" cy="80%" r="35%">
+      <stop offset="0%" stop-color="#00d296" stop-opacity="0.12"/>
+      <stop offset="100%" stop-color="#00d296" stop-opacity="0"/>
+    </radialGradient>
+  </defs>
+
+  <!-- Base background -->
+  <rect width="1200" height="630" fill="url(#bg)"/>
+  <!-- Glow layers -->
+  <rect width="1200" height="630" fill="url(#glow)"/>
+  <rect width="1200" height="630" fill="url(#glowGreen)"/>
+
+  <!-- Grid lines horizontal -->
+  <g stroke="#3483FA" stroke-opacity="0.06" stroke-width="1">
+    <line x1="0" y1="52" x2="1200" y2="52"/>
+    <line x1="0" y1="104" x2="1200" y2="104"/>
+    <line x1="0" y1="156" x2="1200" y2="156"/>
+    <line x1="0" y1="208" x2="1200" y2="208"/>
+    <line x1="0" y1="260" x2="1200" y2="260"/>
+    <line x1="0" y1="312" x2="1200" y2="312"/>
+    <line x1="0" y1="364" x2="1200" y2="364"/>
+    <line x1="0" y1="416" x2="1200" y2="416"/>
+    <line x1="0" y1="468" x2="1200" y2="468"/>
+    <line x1="0" y1="520" x2="1200" y2="520"/>
+    <line x1="0" y1="572" x2="1200" y2="572"/>
+    <line x1="0" y1="624" x2="1200" y2="624"/>
+  </g>
+  <!-- Grid lines vertical -->
+  <g stroke="#3483FA" stroke-opacity="0.06" stroke-width="1">
+    <line x1="52" y1="0" x2="52" y2="630"/>
+    <line x1="104" y1="0" x2="104" y2="630"/>
+    <line x1="156" y1="0" x2="156" y2="630"/>
+    <line x1="208" y1="0" x2="208" y2="630"/>
+    <line x1="260" y1="0" x2="260" y2="630"/>
+    <line x1="312" y1="0" x2="312" y2="630"/>
+    <line x1="364" y1="0" x2="364" y2="630"/>
+    <line x1="416" y1="0" x2="416" y2="630"/>
+    <line x1="468" y1="0" x2="468" y2="630"/>
+    <line x1="520" y1="0" x2="520" y2="630"/>
+    <line x1="572" y1="0" x2="572" y2="630"/>
+    <line x1="624" y1="0" x2="624" y2="630"/>
+    <line x1="676" y1="0" x2="676" y2="630"/>
+    <line x1="728" y1="0" x2="728" y2="630"/>
+    <line x1="780" y1="0" x2="780" y2="630"/>
+    <line x1="832" y1="0" x2="832" y2="630"/>
+    <line x1="884" y1="0" x2="884" y2="630"/>
+    <line x1="936" y1="0" x2="936" y2="630"/>
+    <line x1="988" y1="0" x2="988" y2="630"/>
+    <line x1="1040" y1="0" x2="1040" y2="630"/>
+    <line x1="1092" y1="0" x2="1092" y2="630"/>
+    <line x1="1144" y1="0" x2="1144" y2="630"/>
+    <line x1="1196" y1="0" x2="1196" y2="630"/>
+  </g>
+
+  <!-- Left accent bar -->
+  <rect x="80" y="140" width="3" height="350" fill="#3483FA" opacity="0.4"/>
+
+  <!-- Available badge -->
+  <rect x="104" y="148" width="220" height="30" rx="15" fill="#00d29620"/>
+  <circle cx="124" cy="163" r="5" fill="#00d296"/>
+  <text x="136" y="168" font-family="monospace" font-size="12" fill="#00d296" letter-spacing="2">AVAILABLE</text>
+
+  <!-- Name -->
+  <text x="104" y="270" font-family="Georgia, serif" font-size="68" font-weight="900" fill="#ffffff" letter-spacing="-2">Luis Cifuentes</text>
+
+  <!-- Role line -->
+  <text x="107" y="325" font-family="monospace" font-size="22" fill="#8892a4" letter-spacing="0.5">Senior Backend Engineer</text>
+
+  <!-- Divider -->
+  <line x1="104" y1="355" x2="680" y2="355" stroke="#1e2a42" stroke-width="1"/>
+
+  <!-- Tags row -->
+  <!-- Python tag -->
+  <rect x="104" y="372" width="100" height="30" rx="6" fill="#3483FA18"/>
+  <text x="154" y="392" font-family="monospace" font-size="13" fill="#3483FA" text-anchor="middle">Python</text>
+  <!-- Go tag -->
+  <rect x="214" y="372" width="70" height="30" rx="6" fill="#00d29618"/>
+  <text x="249" y="392" font-family="monospace" font-size="13" fill="#00d296" text-anchor="middle">Go</text>
+  <!-- Distributed systems tag -->
+  <rect x="294" y="372" width="210" height="30" rx="6" fill="#ffffff0a"/>
+  <text x="399" y="392" font-family="monospace" font-size="13" fill="#8892a4" text-anchor="middle">Distributed Systems</text>
+  <!-- Kubernetes tag -->
+  <rect x="514" y="372" width="120" height="30" rx="6" fill="#ffffff0a"/>
+  <text x="574" y="392" font-family="monospace" font-size="13" fill="#8892a4" text-anchor="middle">Kubernetes</text>
+
+  <!-- Stats row -->
+  <text x="104" y="460" font-family="Georgia, serif" font-size="38" font-weight="900" fill="#3483FA">8+</text>
+  <text x="104" y="482" font-family="monospace" font-size="11" fill="#8892a4" letter-spacing="1">YEARS</text>
+
+  <text x="220" y="460" font-family="Georgia, serif" font-size="38" font-weight="900" fill="#3483FA">10+</text>
+  <text x="220" y="482" font-family="monospace" font-size="11" fill="#8892a4" letter-spacing="1">SYSTEMS BUILT</text>
+
+  <text x="360" y="460" font-family="Georgia, serif" font-size="38" font-weight="900" fill="#3483FA">8+</text>
+  <text x="360" y="482" font-family="monospace" font-size="11" fill="#8892a4" letter-spacing="1">TECHNOLOGIES</text>
+
+  <!-- Domain tag bottom -->
+  <text x="104" y="530" font-family="monospace" font-size="13" fill="#3f4f6a">lcifuentes.dev</text>
+
+  <!-- Right decorative terminal card -->
+  <rect x="780" y="160" width="340" height="300" rx="12" fill="#0f1729" stroke="#1e2a42" stroke-width="1"/>
+  <!-- Terminal header -->
+  <rect x="780" y="160" width="340" height="36" rx="12" fill="#161f35"/>
+  <rect x="780" y="184" width="340" height="12" fill="#161f35"/>
+  <circle cx="804" cy="178" r="5" fill="#ff5f57"/>
+  <circle cx="820" cy="178" r="5" fill="#febc2e"/>
+  <circle cx="836" cy="178" r="5" fill="#28c840"/>
+  <text x="885" y="183" font-family="monospace" font-size="11" fill="#3f4f6a">~/lcifuentes</text>
+  <!-- Terminal content -->
+  <text x="800" y="226" font-family="monospace" font-size="12" fill="#3483FA">$</text>
+  <text x="816" y="226" font-family="monospace" font-size="12" fill="#e8eaf0"> whoami</text>
+  <text x="800" y="252" font-family="monospace" font-size="12" fill="#00d296">→</text>
+  <text x="818" y="252" font-family="monospace" font-size="12" fill="#8892a4"> Luis Cifuentes</text>
+  <text x="800" y="278" font-family="monospace" font-size="12" fill="#3483FA">$</text>
+  <text x="816" y="278" font-family="monospace" font-size="12" fill="#e8eaf0"> cat stack.txt</text>
+  <text x="800" y="304" font-family="monospace" font-size="12" fill="#00d296">→</text>
+  <text x="818" y="304" font-family="monospace" font-size="12" fill="#8892a4"> Python · Go · FastAPI</text>
+  <text x="800" y="326" font-family="monospace" font-size="12" fill="#8892a4">   gRPC · Kafka · k8s</text>
+  <text x="800" y="350" font-family="monospace" font-size="12" fill="#3483FA">$</text>
+  <text x="816" y="350" font-family="monospace" font-size="12" fill="#e8eaf0"> status</text>
+  <text x="800" y="376" font-family="monospace" font-size="12" fill="#00d296">→</text>
+  <text x="818" y="376" font-family="monospace" font-size="12" fill="#00d296"> open to work ✓</text>
+  <!-- Cursor blink -->
+  <rect x="800" y="396" width="8" height="14" rx="1" fill="#3483FA" opacity="0.8"/>
+</svg>
